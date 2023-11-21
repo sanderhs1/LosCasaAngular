@@ -1,1 +1,6 @@
 # LosCasaAngular
+
+Hva må gjøres:
+-
+-
+-
