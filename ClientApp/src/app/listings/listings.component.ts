@@ -77,4 +77,12 @@ export class ListingsComponent implements OnInit {
   ngOnInit(): void {
     this.getlistings();
   }
+  getListings(maxPrice?: number, minRooms?: number): void {
+    this._listingService.getListings(maxPrice, minRooms)
+      .subscribe(data => {
+        console.log('All:', JSON.stringify(data));
+        this.listings = data;
+        this.filteredlistings = this.listings; // Assuming you want to apply the same filters to the filteredListings
+      });
+  }
 }
