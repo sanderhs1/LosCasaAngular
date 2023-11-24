@@ -11,12 +11,21 @@ public static class DBInit
     {
         using var serviceScope = app.ApplicationServices.CreateScope();
         ListingDbContext context = serviceScope.ServiceProvider.GetRequiredService<ListingDbContext>();
-        //context.Database.EnsureDeleted();
+        context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
 
         if (!context.Listings.Any())
         {
-            var listings = new List<Listing> { };
+            var listings = new List<Listing>
+            {
+                new Listing
+                {
+                    Name = "House",
+                    Price = 500,
+                    Description = "Nice House",
+                    ImageUrl = "assets/images/House.jpg"
+                }
+            };
             context.AddRange(listings);
             context.SaveChanges();
         }
@@ -54,6 +63,6 @@ public static class DBInit
         //{
         //    rent.TotalPrice = rent.RentListings?.Sum(oi => oi.RentListingPrice) ?? 0;
         //}
-        context.SaveChanges();
+        //context.SaveChanges();
     }
 }

@@ -14,6 +14,19 @@ builder.Services.AddDbContext<ListingDbContext>(options => {
         builder.Configuration["ConnectionStrings:ListingDbContextConnection"]);
 });
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "AllowSpecificOrigin",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:44480") // The URL of your Angular app
+                  .AllowAnyMethod()
+                  .AllowAnyHeader()
+                  .AllowCredentials();
+        });
+});
+
 var loggerConfiguration = new LoggerConfiguration()
     .MinimumLevel.Information() // Levels : Trace < Information < Warning < Error < Fatal
     .WriteTo.File($"Logs/app_{DateTime.Now:yyyyMMdd_HHmmss}.log");
@@ -31,21 +44,29 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
+    DBInit.Seed(app);
 }
 app.UseStaticFiles();
 
-//app.UseSession();
-//app.UseAuthentication();
-//app.UseAuthorization();
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios...
+    app.UseHsts();
+}
 
-//app.MapRazorPages();
 
-//app.UseAuthentication();
+app.UseCors("AllowSpecificOrigin"); // Enable CORS using the policy you defined
 
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
 
 //app.MapControllerRoute(
-//    name: "default",
-//    pattern: "{Controllers}/{action=Index}/{id?}");
+//  name: "default",
+//   pattern: "{Controllers}/{action=Index}/{id?}");
+
 
 app.MapFallbackToFile("index.html"); ;
 

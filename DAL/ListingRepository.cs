@@ -18,28 +18,20 @@ public class ListingRepository : InterListingRepository
     //{
     //    return await _db.RentListings.ToListAsync();  
     //}
-    public async Task<List<Listing>> GetAllListings()
-    {
-        return await _db.Listings.ToListAsync();
-    }
-    // Warning her
-    public IQueryable<Listing> GetAllAsQueryable()
-    {
-        return _db.Listings.AsQueryable();
-    }
-    public async Task<IEnumerable<Listing>> GetAll()
+   
+
+    public async Task<IEnumerable<Listing>?> GetAll()
     {
         try
         {
             return await _db.Listings.ToListAsync();
         }
-        catch (Exception e)
+        catch(Exception e)
         {
             _logger.LogError("[ListingRepository] listings ToListAsync() failed when GetAll(), error message: {e}", e.Message);
-            return Enumerable.Empty<Listing>(); 
+            return null;
         }
     }
-
     public async Task<Listing?> GetListingById(int id)
     {
         try

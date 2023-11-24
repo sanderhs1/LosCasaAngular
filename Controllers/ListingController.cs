@@ -251,14 +251,13 @@
 using Microsoft.AspNetCore.Mvc;
 using LosCasaAngular.Models;
 using LosCasaAngular.DAL;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore;
 
 namespace LosCasaAngular.Controllers;
 
 
 [ApiController]
-[Route("api/controller")]
+[Route("api/[controller]")]
 
 public class ListingController : Controller
 {
@@ -272,7 +271,6 @@ public class ListingController : Controller
     }
 
     [HttpGet]
-
     public async Task<IActionResult> GetAll()
     {
         var listings = await _listingRepository.GetAll();
@@ -304,33 +302,36 @@ public class ListingController : Controller
         }
     }
 
-    [HttpGet("table")]
-    public async Task<ActionResult<IEnumerable<Listing>>> GetTable(decimal? maxPrice = null, int? minRooms = null)
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetListingById(int id)
     {
-        IQueryable<Listing> query = _listingRepository.GetAllAsQueryable();
-
-        if (maxPrice.HasValue)
+        var listing = await _listingRepository.GetListingById(id);
+        if (listing == null)
         {
-            query = query.Where(l => l.Price <= maxPrice.Value);
+            _logger.LogError("[ListingController] Item list not found while executing _itemRepository.GetAll()");
+            return NotFound("Listing list not found");
         }
-
-        if (minRooms.HasValue)
-        {
-            query = query.Where(l => l.AntallRom >= minRooms.Value);
-        }
-
-        var listings = await query.ToListAsync();
-
-        if (listings == null || !listings.Any())
-        {
-            _logger.LogError("[ListingController] No listings found with the specified filters.");
-            return NotFound("No listings found with the specified filters.");
-        }
-
-        
-        return Ok(listings);
+        return Ok(listing);
     }
 
-
-
+    [HttpPut("update/{id}")]
+    public async Task<IActionResult> Update(Listing newListing)
+    {
+        if (newListing == null)
+        {
+            return BadRequest("Invalid item data.");
+        }
+        bool returnOk = await _listingRepository.Update(newListing);
+        if (returnOk)
+        {
+            var response = new { success = true, message = "Listing " + newListing.Name + " updated successfully" };
+            return Ok(response);
+        }
+        else
+        {
+            _logger.LogError("[ListingController] Listing update failed for the Item " + newListing.Name);
+            var response = new { success = false, message = "Listing creation failed" };
+            return Ok(response);
+        }
+    }
 }

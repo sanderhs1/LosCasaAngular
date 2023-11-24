@@ -7,7 +7,8 @@ const PROXY_CONFIG = [
   {
     context: [
       "/api",
-   ],
+    ],
+   target:"http://localhost:5239",
     proxyTimeout: 10000,
     target: target,
     secure: false,

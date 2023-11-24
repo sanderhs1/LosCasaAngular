@@ -8,7 +8,7 @@ import { IListing } from './listing'; // Import your item model
 })
 export class ListingService {
 
-  private baseUrl = 'api/listing';
+  private baseUrl = 'http://localhost:5239/api/listing';
 
   constructor(private _http: HttpClient) { }
 
@@ -17,7 +17,7 @@ export class ListingService {
   //}
 
   createListing(newListing: IListing): Observable<any> {
-    const createUrl = 'api/listing/create';
+    const createUrl = `${this.baseUrl}/create`;
     return this._http.post<any>(createUrl, newListing);
   }
 
