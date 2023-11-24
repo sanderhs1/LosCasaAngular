@@ -34,12 +34,12 @@ export class ListingsComponent implements OnInit {
   deletelisting(listing: IListing): void {
     const confirmDelete = confirm(`Are you sure you want to delete "${listing.Name}"?`);
     if (confirmDelete) {
-      this._listingService.deletelisting(listing.ListingId)
+      this._listingService.deleteListing(listing.ListingId)
         .subscribe(
           (response) => {
             if (response.success) {
               console.log(response.message);
-              this.filteredListings = this.filteredListings.filter(i => i !== listing);
+              this.filteredlistings = this.filteredlistings.filter(i => i !== listing);
             }
           },
           (error) => {

@@ -47,7 +47,7 @@ namespace LosCasaAngular.Models
         [JsonPropertyName("ImageUrl1")]
         public string? ImageUrl1 { get; set; }
 
-        [JsonPropertyName("RentListings")]
-        public virtual List<RentListing>? RentListings { get; set; }
+        //[JsonPropertyName("RentListings")]
+    //    public virtual List<RentListing>? RentListings { get; set; }
     }
 }

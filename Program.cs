@@ -6,8 +6,7 @@ using LosCasaAngular.DAL;
 
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("ListingDbContextConnection") ?? throw new
-    InvalidOperationException("Connection string 'ListingDbContextConnection' not found");
+
 
 // Database
 builder.Services.AddDbContext<ListingDbContext>(options => {
@@ -35,14 +34,19 @@ if (app.Environment.IsDevelopment())
 }
 app.UseStaticFiles();
 
-app.UseSession();
-app.UseAuthentication();
-app.UseAuthorization();
+//app.UseSession();
+//app.UseAuthentication();
+//app.UseAuthorization();
 
-app.MapRazorPages();
+//app.MapRazorPages();
 
-app.UseAuthentication();
+//app.UseAuthentication();
 
-app.MapDefaultControllerRoute();
+
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "{Controllers}/{action=Index}/{id?}");
+
+app.MapFallbackToFile("index.html"); ;
 
 app.Run();

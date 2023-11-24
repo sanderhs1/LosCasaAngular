@@ -8,7 +8,7 @@ namespace LosCasaAngular.DAL
         Task<Listing?>GetListingById(int id);
 
         Task<List<Listing>> GetAllListings();
-        Task<List<RentListing>> GetAllRents();
+        //Task<List<RentListing>> GetAllRents();
 
         IQueryable<Listing> GetAllAsQueryable();
 
