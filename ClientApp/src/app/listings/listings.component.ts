@@ -28,10 +28,10 @@ export class ListingsComponent implements OnInit {
   set listFilter(value: string) {
     this._listFilter = value;
     console.log('In setter:', value);
-    this.filteredlistings = this.performFilter(value);
+    this.filteredListings = this.performFilter(value);
   }
 
-  deletelisting(listing: IListing): void {
+  deleteListing(listing: IListing): void {
     const confirmDelete = confirm(`Are you sure you want to delete "${listing.Name}"?`);
     if (confirmDelete) {
       this._listingService.deleteListing(listing.ListingId)
@@ -39,7 +39,7 @@ export class ListingsComponent implements OnInit {
           (response) => {
             if (response.success) {
               console.log(response.message);
-              this.filteredlistings = this.filteredlistings.filter(i => i !== listing);
+              this.filteredListings = this.filteredListings.filter(i => i !== listing);
             }
           },
           (error) => {
@@ -48,17 +48,17 @@ export class ListingsComponent implements OnInit {
     }
   }
 
-  getlistings(): void {
+  getListings(): void {
     this._listingService.getListings()
       .subscribe(data => {
         console.log('All', JSON.stringify(data));
         this.listings = data;
-        this.filteredlistings = this.listings;
+        this.filteredListings = this.listings;
       }
       );
   }
 
-  filteredlistings: IListing[] = this.listings;
+  filteredListings: IListing[] = this.listings;
 
   performFilter(filterBy: string): IListing[] {
     filterBy = filterBy.toLocaleLowerCase();
@@ -70,19 +70,11 @@ export class ListingsComponent implements OnInit {
     this.displayImage = !this.displayImage;
   }
 
-  navigateTolistingform() {
+  navigateToListingform() {
     this._router.navigate(['/listingform']);
   }
 
   ngOnInit(): void {
-    this.getlistings();
-  }
-  getListings(maxPrice?: number, minRooms?: number): void {
-    this._listingService.getListings(maxPrice, minRooms)
-      .subscribe(data => {
-        console.log('All:', JSON.stringify(data));
-        this.listings = data;
-        this.filteredlistings = this.listings; // Assuming you want to apply the same filters to the filteredListings
-      });
+    this.getListings();
   }
 }

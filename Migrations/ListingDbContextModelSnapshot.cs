@@ -27,29 +27,9 @@ namespace LosCasaAngular.Migrations
                         .HasColumnType("INTEGER")
                         .HasAnnotation("Relational:JsonPropertyName", "ListingId");
 
-                    b.Property<string>("Adresse")
-                        .HasColumnType("TEXT")
-                        .HasAnnotation("Relational:JsonPropertyName", "Adresse");
-
-                    b.Property<int>("AntallRom")
-                        .HasColumnType("INTEGER")
-                        .HasAnnotation("Relational:JsonPropertyName", "AntallRom");
-
-                    b.Property<int>("Area")
-                        .HasColumnType("INTEGER")
-                        .HasAnnotation("Relational:JsonPropertyName", "Area");
-
-                    b.Property<int>("Bad")
-                        .HasColumnType("INTEGER")
-                        .HasAnnotation("Relational:JsonPropertyName", "Bad");
-
                     b.Property<string>("Description")
                         .HasColumnType("TEXT")
                         .HasAnnotation("Relational:JsonPropertyName", "Description");
-
-                    b.Property<int>("Floor")
-                        .HasColumnType("INTEGER")
-                        .HasAnnotation("Relational:JsonPropertyName", "Floor");
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("TEXT")
@@ -63,10 +43,6 @@ namespace LosCasaAngular.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT")
                         .HasAnnotation("Relational:JsonPropertyName", "Price");
-
-                    b.Property<int>("Spots")
-                        .HasColumnType("INTEGER")
-                        .HasAnnotation("Relational:JsonPropertyName", "Spots");
 
                     b.HasKey("ListingId");
 

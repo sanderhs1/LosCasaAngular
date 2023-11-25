@@ -34,7 +34,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor='let listing of filteredlistings'>
+    <tr *ngFor='let listing of filteredListings'>
       <td>{{ listing.ListingId }}</td>
       <td>{{ listing.Name }}</td>
       <td width="120">{{ listing.Price | convertToCurrency: 'kr.' }}</td>
@@ -42,7 +42,7 @@
       <td *ngIf="displayImage"><img [src]='listing.ImageUrl' width="80" /></td>
       <td>
         <a [routerLink]="['/listingform', 'edit', listing.ListingId]">Update</a>
-        <a class="delete-link" (click)="deletelisting(listing)">Delete</a>
+        <a class="delete-link" (click)="deleteListing(listing)">Delete</a>
       </td>
     </tr>
   </tbody>

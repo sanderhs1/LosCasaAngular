@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using LosCasaAngular.Models;
+using LosCasaAngular.DAL;
 
 
 namespace LosCasaAngular.DAL;
@@ -9,16 +10,12 @@ public class ListingRepository : InterListingRepository
     private readonly ListingDbContext _db;
 
     private readonly ILogger<ListingRepository> _logger;
+
     public ListingRepository(ListingDbContext db, ILogger<ListingRepository> logger)
     {
         _db = db;
         _logger = logger;
     }
-    //public async Task<List<RentListing>> GetAllRents()
-    //{
-    //    return await _db.RentListings.ToListAsync();  
-    //}
-   
 
     public async Task<IEnumerable<Listing>?> GetAll()
     {
@@ -26,12 +23,14 @@ public class ListingRepository : InterListingRepository
         {
             return await _db.Listings.ToListAsync();
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             _logger.LogError("[ListingRepository] listings ToListAsync() failed when GetAll(), error message: {e}", e.Message);
             return null;
         }
+
     }
+
     public async Task<Listing?> GetListingById(int id)
     {
         try
@@ -40,9 +39,10 @@ public class ListingRepository : InterListingRepository
         }
         catch (Exception e)
         {
-            _logger.LogError("[ListingRepository] listing FindAsync(id) failed when GetListingById for ListingId {ListingId:0000}, error message:{e}", id, e.Message);
+            _logger.LogError("[ListingRepository] listing FindAsync(id) failed when GetListingById for ListingId {ListingmId:0000}, error message: {e}", id, e.Message);
             return null;
         }
+
     }
 
     public async Task<bool> Create(Listing listing)
@@ -55,7 +55,7 @@ public class ListingRepository : InterListingRepository
         }
         catch (Exception e)
         {
-            _logger.LogError("[ListingController] listing creation failed for listing {@listing}, error message: {e}", listing, e.Message);
+            _logger.LogError("[ListingRepository] listing creation failed for listing {@item}, error message: {e}", listing, e.Message);
             return false;
         }
     }
@@ -67,13 +67,13 @@ public class ListingRepository : InterListingRepository
             _db.Listings.Update(listing);
             await _db.SaveChangesAsync();
             return true;
-
         }
         catch (Exception e)
         {
-            _logger.LogError("[ListingController] listing FindAsync(id) failed when updating the ListingId {ListingId:0000}, error message: {e}", listing, e.Message);
+            _logger.LogError("[ListingRepository] listing FindAsync(id) failed when updating the ListingId {ListingId:0000}, error message: {e}", listing, e.Message);
             return false;
         }
+
     }
 
     public async Task<bool> Delete(int id)
@@ -90,14 +90,12 @@ public class ListingRepository : InterListingRepository
             _db.Listings.Remove(listing);
             await _db.SaveChangesAsync();
             return true;
-
         }
-
-        catch(Exception e)
-        { // warning her
-            _logger.LogError("[ListingController] listing deletion failed for the ListingId {ListingId:0000}, error message: {ErrorMessage}", id, e.Message);
+        catch (Exception e)
+        {
+            _logger.LogError("[ListingRepository] listing deletion failed for the ListingId {ListingId:0000}, error message: {e}", id, e.Message);
             return false;
         }
     }
-
 }
+
