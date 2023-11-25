@@ -1,13 +1,9 @@
-
 <h1 id="tableLabel">List of Listings ({{viewTitle}} View)</h1>
-
-<button class='btn btn-primary' (click)='getListings()'>Get Listings</button>
 
 <div class='row'>
   <div class='col-md-2'>Filter by:</div>
   <div class='col-md-4'>
-    <input type='text'
-           [(ngModel)]='listFilter' />
+    <input type='text' [(ngModel)]='listFilter' />
   </div>
 </div>
 
@@ -17,36 +13,23 @@
   </div>
 </div>
 
-<table class='table table-striped' aria-labelledby="tableLabel">
-  <thead>
-    <tr>
-      <th>ListingId</th>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Description</th>
-      <th width="180">
-        <button class='btn btn-primary'
-                (click)='toggleImage()'>
-          {{ displayImage ? 'Hide' : 'Show' }} Image
-        </button>
-      </th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor='let listing of filteredListings'>
-      <td>{{ listing.ListingId }}</td>
-      <td>{{ listing.Name }}</td>
-      <td width="120">{{ listing.Price | convertToCurrency: 'kr.' }}</td>
-      <td>{{ listing.Description }}</td>
-      <td *ngIf="displayImage"><img [src]='listing.ImageUrl' width="80" /></td>
-      <td>
-        <a [routerLink]="['/listingform', 'edit', listing.ListingId]">Update</a>
-        <a class="delete-link" (click)="deleteListing(listing)">Delete</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class='row'>
+  <div *ngFor='let listing of filteredListings' class='col-md-4'>
+    <div class='card' style="width: 20rem;">
+      <img class='card-img-top' [src]='listing.ImageUrl' alt='Card image cap'>
+      <div class='card-body'>
+        <h5 class='card-title'>{{ listing.Name }}</h5>
+        <p class='card-text'>{{ listing.Description }}</p>
+        <p class='card-text'>Price: {{ listing.Price | convertToCurrency: 'kr.' }}</p>
+        <a [routerLink]="['/listingform', 'edit', listing.ListingId]" class='btn btn-primary'>Update</a>
+        <a (click)="deleteListing(listing)" class='btn btn-danger'>Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-<button class='btn btn-primary' [routerLink]="['/listingform', 'create', -1]">Create New Listing</button>
-<button class='btn btn-secondary' routerLink="/listingform">Create New Listing</button>
+<div class="row mt-3">
+  <div class="col-md-12">
+    <button class='btn btn-primary' [routerLink]="['/listingform', 'create', -1]">Create New Listing</button>
+  </div>
+</div>
