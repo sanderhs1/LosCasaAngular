@@ -10,6 +10,7 @@ public class ListingDbContext : DbContext
     }
 
     public DbSet<Listing> Listings{ get; set; }
+    public DbSet<Rent> Rents { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

@@ -18,4 +18,5 @@ public class Listing
 
     [JsonPropertyName("ImageUrl")]
     public string? ImageUrl { get; set; }
+    
 }

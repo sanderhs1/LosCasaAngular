@@ -97,5 +97,85 @@ public class ListingRepository : InterListingRepository
             return false;
         }
     }
-}
 
+    public async Task<IEnumerable<Rent>?> GetAllRents()
+    {
+        try
+        {
+            return await _db.Rents.ToListAsync();
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("[ListingRepository] Rents ToListAsync() failed when GetAllRents(), error message: {e}", e.Message);
+            return null;
+        }
+    }
+
+    public async Task<Rent?> GetRentById(int id)
+    {
+        try
+        {
+            return await _db.Rents.FindAsync(id);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("[ListingRepository] Rent FindAsync(id) failed when GetRentById for RentId {RentId:0000}, error message: {e}", id, e.Message);
+            return null;
+        }
+    }
+
+    public async Task<bool> CreateRent(Rent rent)
+    {
+        try
+        {
+            _db.Rents.Add(rent);
+            await _db.SaveChangesAsync();
+            return true;
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("[ListingRepository] Rent creation failed for rent {@item}, error message: {e}", rent, e.Message);
+            return false;
+        }
+    }
+
+    public async Task<bool> UpdateRent(Rent rent)
+    {
+        try
+        {
+            _db.Rents.Update(rent);
+            await _db.SaveChangesAsync();
+            return true;
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("[ListingRepository] Rent FindAsync(id) failed when updating the RentId {RentId:0000}, error message: {e}", rent, e.Message);
+            return false;
+        }
+    }
+
+    public async Task<bool> DeleteRent(int id)
+    {
+        try
+        {
+            var rent = await _db.Rents.FindAsync(id);
+            if (rent == null)
+            {
+                _logger.LogError("[ListingRepository] Rent not found for the RentId {RentId:0000}", id);
+                return false;
+            }
+
+            _db.Rents.Remove(rent);
+            await _db.SaveChangesAsync();
+            return true;
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("[ListingRepository] Rent deletion failed for the RentId {RentId:0000}, error message: {e}", id, e.Message);
+            return false;
+
+
+        }
+
+    }
+}

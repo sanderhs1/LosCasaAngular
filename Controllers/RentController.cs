@@ -1,162 +1,138 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Forum.Models;
-using Microsoft.EntityFrameworkCore;
-using Forum.DAL;
-using Forum.ViewModels;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Security.Cryptography.Xml;
-using Microsoft.IdentityModel.Tokens;
+using LosCasaAngular.Models;
+using LosCasaAngular.DAL;
+using System;
 using Microsoft.Extensions.Logging;
 
+namespace LosCasaAngular.Controllers;
 
-namespace Forum.Controllers
+[ApiController]
+[Route("api/[controller]")]
+public class RentController : Controller
 {
-    public class RentController : Controller
+    private readonly InterListingRepository _listingRepository;
+    private readonly ILogger<RentController> _logger;
+
+    public RentController(InterListingRepository listingRepository, ILogger<RentController> logger)
     {
-        private readonly ListingDbContext _listingDbContext;
-        private readonly ILogger<RentController> _logger;
+        _listingRepository = listingRepository;
+        _logger = logger;
+    }
 
-        public RentController(ListingDbContext listingDbContext, ILogger<RentController> logger)
+    // Get all rents
+    [HttpGet]
+    public async Task<IActionResult> GetAllRents()
+    {
+        try
         {
-            _listingDbContext = listingDbContext;
-            _logger = logger;
-        }
-        public async Task<IActionResult> Table()
-        {
-            List<Rent> rents = await _listingDbContext.Rents.ToListAsync();
-            if (rents == null || !rents.Any())
+            var rents = await _listingRepository.GetAllRents();
+            if (rents == null)
             {
-                _logger.LogError("[RentController] No rents found.");
+                _logger.LogError("[RentController] Rent list not found.");
+                return NotFound("Rent list not found.");
             }
-            return View(rents);
+            return Ok(rents);
         }
-        [HttpGet]
-        public async Task<IActionResult> RentDetails(int rentId)
+        catch (Exception ex)
         {
-            var rent = await _listingDbContext.Rents
-                .Include(r => r.RentListings)
-                .ThenInclude(rl => rl.Listing)
-                .FirstOrDefaultAsync(r => r.RentId == rentId);
+            _logger.LogError(ex, "[RentController] Error occurred while getting all rents.");
+            return StatusCode(500, "Internal server error while getting rents.");
+        }
+    }
 
+    // Get rent by ID
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetRentById(int id)
+    {
+        try
+        {
+            var rent = await _listingRepository.GetRentById(id);
             if (rent == null)
             {
-                _logger.LogWarning("[RentController] Rent not found for RentId {RentId}", rentId);
-                return NotFound();
+                _logger.LogError($"[RentController] Rent not found for ID: {id}");
+                return NotFound($"Rent not found for ID: {id}");
             }
-
-            var viewModel = new RentDetailsViewModel
-            {
-                Rent = rent,
-                RentListings = rent.RentListings,
-                Listing = rent.RentListings.FirstOrDefault()?.Listing
-            };
-
-            return View(viewModel);
+            return Ok(rent);
         }
-
-        [Authorize]
-        [HttpGet]
-
-        public async Task<IActionResult> CreateRentListing(int ListingId)
+        catch (Exception ex)
         {
-            var listings = await _listingDbContext.Listings.ToListAsync();
-            var rents = await _listingDbContext.Rents.ToListAsync();
-            var createRentListingViewModel = new CreateRentListingViewModel
-            {
-                RentListing = new RentListing { ListingId = ListingId },
-
-                ListingSelectList = listings.Select(listing => new SelectListItem
-                {
-                    Value = listing.ListingId.ToString(),
-                    Text = listing.ListingId.ToString() + ": " + listing.Name
-                }).ToList(),
-
-                RentSelectList = rents.Select(rent => new SelectListItem
-                {
-                    Value = rent.RentId.ToString(),
-                    Text = "Rent" + rent.RentId.ToString() + ", Customer: " + rent.Customer?.CustomerName ?? "Customer Not Found"
-                }).ToList(),
-
-            };
-            return View(createRentListingViewModel);
+            _logger.LogError(ex, "[RentController] Error occurred while getting rent by ID.");
+            return StatusCode(500, "Internal server error while getting rent by ID.");
         }
+    }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateRentListing(RentListing rentListing)
+    // Create a new rent
+    [HttpPost]
+    public async Task<IActionResult> CreateRent([FromBody] Rent rent)
+    {
+        try
         {
-            if (rentListing.EndDate <= rentListing.StartDate)
+            if (!ModelState.IsValid)
             {
-                _logger.LogWarning("[RentController] End date {EndDate} is not greater than start date {StartDate}", rentListing.EndDate, rentListing.StartDate);
-                var rentDetailsViewModel = new RentDetailsViewModel
-                {
-
-                    ErrorMessage = "End date must be greater than start date."
-                };
-
-
-                return View("RentDetails", rentDetailsViewModel);
+                return BadRequest(ModelState);
             }
-            try
+
+            var createdRent = await _listingRepository.CreateRent(rent);
+            if (createdRent == null)
             {
-                var newListing = await _listingDbContext.Listings.FindAsync(rentListing.ListingId);
-                var newRent = await _listingDbContext.Rents.FindAsync(rentListing.RentId);
-                _logger.LogInformation("[RentController] RentListing created successfully for ListingId {ListingId} and RentId {RentId}", rentListing.ListingId, rentListing.RentId);
-
-
-                if (newListing == null || newRent == null)
-                {
-                    return BadRequest("Listing or Rent not found");
-                }
-
-                var newRentListing = new RentListing
-                {
-                    ListingId = rentListing.ListingId,
-                    Listing = newListing,
-                    RentId = rentListing.RentId,
-                    StartDate = rentListing.StartDate,
-                    EndDate = rentListing.EndDate,
-                    Rent = newRent
-                };
-
-
-                int daysStayed = (newRentListing.EndDate - newRentListing.StartDate).Days;
-
-
-                newRentListing.RentListingPrice = daysStayed * newRentListing.Listing.Price;
-
-                if (newRentListing.Listing == null || newRentListing.Rent == null)
-                {
-                    var listings = await _listingDbContext.Listings.ToListAsync();
-                    var rents = await _listingDbContext.Rents.ToListAsync();
-                    var createRentListingViewModel = new CreateRentListingViewModel
-                    {
-                        RentListing = rentListing,
-                        ListingSelectList = listings.Select(listing => new SelectListItem
-                        {
-                            Value = listing.ListingId.ToString(),
-                            Text = listing.ListingId.ToString() + ": " + listing.Name
-                        }).ToList(),
-
-                        RentSelectList = rents.Select(rent => new SelectListItem
-                        {
-                            Value = rent.RentId.ToString(),
-                            Text = "Rent" + rent.RentId.ToString() + ", Customer: " + rent.Customer?.CustomerName ?? "Cusotmer not Found"
-                        }).ToList(),
-                    };
-                    return View(createRentListingViewModel);
-                }
-                _listingDbContext.RentListings.Add(newRentListing);
-                await _listingDbContext.SaveChangesAsync();
-                return RedirectToAction(nameof(RentDetails), new { rentId = newRentListing.RentId });
+                _logger.LogError("[RentController] Rent could not be created.");
+                return BadRequest("Rent could not be created.");
             }
-            catch (Exception ex)
+            return CreatedAtAction(nameof(GetRentById), createdRent);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "[RentController] Error occurred while creating rent.");
+            return StatusCode(500, "Internal server error while creating rent.");
+        }
+    }
+
+    // Update an existing rent
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateRent(int id, [FromBody] Rent rent)
+    {
+        try
+        {
+            if (id != rent.RentId)
             {
-                _logger.LogError(ex, "[RentController] RentListing creation failed due to an exception.");
-
-                return BadRequest("RentListing creation failed.");
+                return BadRequest("Mismatched rent ID.");
             }
+
+            var updatedRent = await _listingRepository.UpdateRent(rent);
+            if (updatedRent == null)
+            {
+                _logger.LogError($"[RentController] Rent could not be updated for ID: {id}");
+                return NotFound($"Rent could not be updated for ID: {id}");
+            }
+            return NoContent();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "[RentController] Error occurred while updating rent.");
+            return StatusCode(500, "Internal server error while updating rent.");
+        }
+    }
+
+    // Delete a rent
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteRent(int id)
+    {
+        try
+        {
+            var rent = await _listingRepository.GetRentById(id);
+            if (rent == null)
+            {
+                _logger.LogError($"[RentController] Rent not found for ID: {id}");
+                return NotFound($"Rent not found for ID: {id}");
+            }
+
+            await _listingRepository.DeleteRent(id);
+            return NoContent();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "[RentController] Error occurred while deleting rent.");
+            return StatusCode(500, "Internal server error while deleting rent.");
         }
     }
 }
