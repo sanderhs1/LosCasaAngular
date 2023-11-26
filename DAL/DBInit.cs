@@ -10,7 +10,7 @@ public static class DBInit
     {
         using var serviceScope = app.ApplicationServices.CreateScope();
         ListingDbContext context = serviceScope.ServiceProvider.GetRequiredService<ListingDbContext>();
-        context.Database.EnsureDeleted();
+        //context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
 
         if (!context.Listings.Any())
