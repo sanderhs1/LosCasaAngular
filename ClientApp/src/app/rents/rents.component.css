@@ -1,0 +1,58 @@
+.rent-container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.rent-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.date-input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+  .date-input:focus {
+    border-color: #007bff;
+  }
+
+.price-input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: right;
+}
+
+.btn-confirm {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #007bff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+  .btn-confirm:hover {
+    background-color: #0056b3;
+  }
+
+  .btn-confirm:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }

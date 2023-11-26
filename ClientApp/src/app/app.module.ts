@@ -11,6 +11,7 @@ import { ListingsComponent } from './listings/listings.component';
 import { ListingDetailComponent } from './listings/listingdetail.component';
 import { ConvertToCurrency } from './shared/convert-to-currency.pipe';
 import { ListingformComponent } from './listings/listingform.component';
+import { RentsComponent } from './rents/rents.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ListingformComponent } from './listings/listingform.component';
     ListingsComponent,
     ListingDetailComponent,
     ConvertToCurrency,
-    ListingformComponent
+    ListingformComponent,
+    RentsComponent
     
   ],
   imports: [
@@ -32,9 +34,10 @@ import { ListingformComponent } from './listings/listingform.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'listings', component: ListingsComponent },
-      { path: 'listing-detail/:id', component: ListingDetailComponent},
+      { path: 'listingdetail/:id', component: ListingDetailComponent},
       { path: 'listingform', component: ListingformComponent },
       { path: 'listingform/:mode/:id', component: ListingformComponent },
+      { path: 'rents/:id', component: RentsComponent },
       { path: '**', redirectTo: '', pathMatch: 'full' },
       
     ])

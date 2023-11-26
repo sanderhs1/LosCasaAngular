@@ -32,7 +32,6 @@ export class ListingsComponent implements OnInit {
   }
 
   deleteListing(listing: IListing): void {
-    event?.stopPropagation();
     const confirmDelete = confirm(`Are you sure you want to delete "${listing.Name}"?`);
     if (confirmDelete) {
       this._listingService.deleteListing(listing.ListingId)
