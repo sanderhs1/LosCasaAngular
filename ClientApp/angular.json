@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "LosCasaAngular"
+  "defaultProject": "LosCasaAngular",
+  "cli": {
+    "analytics": "fe04d3b0-7a83-4f40-8bef-f695b86f797c"
+  }
 }
