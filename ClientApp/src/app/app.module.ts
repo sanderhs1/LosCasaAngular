@@ -12,7 +12,8 @@ import { ListingDetailComponent } from './listings/listingdetail.component';
 import { ConvertToCurrency } from './shared/convert-to-currency.pipe';
 import { ListingformComponent } from './listings/listingform.component';
 import { RentsComponent } from './rents/rents.component';
-
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +24,9 @@ import { RentsComponent } from './rents/rents.component';
     ListingDetailComponent,
     ConvertToCurrency,
     ListingformComponent,
-    RentsComponent
-    
+    RentsComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -34,12 +36,13 @@ import { RentsComponent } from './rents/rents.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'listings', component: ListingsComponent },
-      { path: 'listingdetail/:id', component: ListingDetailComponent},
+      { path: 'listingdetail/:id', component: ListingDetailComponent },
       { path: 'listingform', component: ListingformComponent },
       { path: 'listingform/:mode/:id', component: ListingformComponent },
       { path: 'rents/:id', component: RentsComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'login', component: LoginComponent }, // Login route added here
       { path: '**', redirectTo: '', pathMatch: 'full' },
-      
     ])
   ],
   providers: [],
