@@ -1,0 +1,12 @@
+<div *ngIf="listing" class="listing-detail">
+  <h2>{{ listing.Name }}</h2>
+  <img [src]="listing.ImageUrl" alt="Image of {{ listing.Name }}" class="listing-image">
+  <div class="listing-info">
+    <p class="listing-price">Price: {{ listing.Price | currency:'kr':true }}</p>
+    <p class="listing-description">{{ listing.Description }}</p>
+  </div>
+  <button (click)="goBack()" class="btn btn-primary">Back to Listings</button>
+</div>
+<div *ngIf="!listing" class="no-listing">
+  <p>Listing not found.</p>
+</div>

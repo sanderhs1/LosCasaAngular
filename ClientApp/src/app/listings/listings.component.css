@@ -8,3 +8,9 @@ thead {
   text-decoration: underline;
   cursor: pointer;
 }
+
+.hover-effect:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  /* Add any other hover styles you want */
+}

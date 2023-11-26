@@ -15,7 +15,7 @@
 
 <div class='row'>
   <div *ngFor='let listing of filteredListings' class='col-md-4'>
-    <div class='card' style="width: 20rem;">
+    <div class='card' style="width: 20rem;" (click)="navigateToListingDetails(listing.ListingId)" [ngClass]="{'hover-effect': true}">
       <img class='card-img-top' [src]='listing.ImageUrl' alt='Card image cap'>
       <div class='card-body'>
         <h5 class='card-title'>{{ listing.Name }}</h5>

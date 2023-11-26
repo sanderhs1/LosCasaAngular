@@ -1,0 +1,31 @@
+.listing-detail {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  max-width: 600px;
+}
+
+.listing-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.listing-info {
+  margin-top: 20px;
+}
+
+.listing-price {
+  font-size: 24px;
+  color: green;
+}
+
+.listing-description {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.btn-primary {
+  margin-top: 20px;
+}

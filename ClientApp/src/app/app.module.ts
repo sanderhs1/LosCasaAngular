@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ListingsComponent } from './listings/listings.component';
+import { ListingDetailComponent } from './listings/listingdetail.component';
 import { ConvertToCurrency } from './shared/convert-to-currency.pipe';
 import { ListingformComponent } from './listings/listingform.component';
 
@@ -18,6 +19,7 @@ import { ListingformComponent } from './listings/listingform.component';
     NavMenuComponent,
     HomeComponent,
     ListingsComponent,
+    ListingDetailComponent,
     ConvertToCurrency,
     ListingformComponent
     
@@ -30,6 +32,7 @@ import { ListingformComponent } from './listings/listingform.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'listings', component: ListingsComponent },
+      { path: 'listing-detail/:id', component: ListingDetailComponent},
       { path: 'listingform', component: ListingformComponent },
       { path: 'listingform/:mode/:id', component: ListingformComponent },
       { path: '**', redirectTo: '', pathMatch: 'full' },
