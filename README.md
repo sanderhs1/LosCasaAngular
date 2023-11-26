@@ -6,8 +6,9 @@ Hva må gjøres:
 - Lage hjemmesiden på nytt, ( dette gjøres på src mappen )
 - Legge til flere Controllers kanskje?
 - Dokumentasjon ( Oppdatere dokumentasjon ) 
-- Listing view ( Trykke inn på Listing )
-- Rent Knapp på Listing View
+- FERDIG med listing view, det funker å trykke inn på listing nå
+- FERDIG med rent knapp på listing view
+- Må route "confirm rent" knapp til rentDetails
 - RentDetails siden etter man har rentet
 - Design
 - Flere variabler i Listings
