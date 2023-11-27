@@ -23,7 +23,7 @@ export class RentService {
   // CREATING a new RENTS
 
   createRent(newRent: IRent): Observable<any> {
-    const createUrl = `${this.baseUrl}/create`;
+    const createUrl = `${this.baseUrl}`;
     return this._http.post<any>(createUrl, newRent);
   }
 

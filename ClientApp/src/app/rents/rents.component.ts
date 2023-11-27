@@ -16,7 +16,7 @@ export class RentsComponent implements OnInit {
   rentForm: FormGroup;
   listingId!: number;
   listingPrice!: number;
-  userId!: number; 
+  userId!: number;
 
 
 
@@ -61,7 +61,7 @@ export class RentsComponent implements OnInit {
         return 0
       }
       const diff = end.getTime() - start.getTime();
-      const days = Math.ceil (diff/(1000 * 60 * 60 * 24)); // Convert milliseconds to days
+      const days = Math.ceil(diff / (1000 * 60 * 60 * 24)); // Convert milliseconds to days
       return days * this.listingPrice;
     }
     return 0;
@@ -72,11 +72,12 @@ export class RentsComponent implements OnInit {
       const price = this.calculatePrice();
       const newRent: IRent = {
         listingId: this.listingId,
-        userId: this.userId, // Make sure to set the user ID from your user context
+        userId: 1, // Set the userId to 1 (or any other desired value)
         startDate: new Date(this.rentForm.value.startDate),
         endDate: new Date(this.rentForm.value.endDate),
         price: price
       };
+
       this.rentService.createRent(newRent).subscribe({
         next: (rent) => {
           console.log('Rent created successfully', rent);
