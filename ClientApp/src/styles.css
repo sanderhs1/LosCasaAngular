@@ -14,7 +14,7 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
-.indextitle { /* Background-image */
+.hometitle { /* Background-image */
   background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url(https://images6.alphacoders.com/117/1178160.jpg); /* https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.oslomet.no%2Fen%2Fabout%2Fkjeller-campus&psig=AOvVaw3JhxQVrJEcwKteNS868h4O&ust=1700672023828000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJijxJHH1YIDFQAAAAAdAAAAABAE - Oslomet.no*/
   background-position: center;
   background-repeat: no-repeat;
@@ -31,7 +31,7 @@ code {
   max-width: 100%;
 }
 
-  .indextitle p { /* Text on background image */
+  .hometitle p { /* Text on background image */
     color: papayawhip;
     padding-left: 17.5%;
     padding-right: 17.5%;
@@ -40,7 +40,7 @@ code {
 
 
 
-.index-box { /* Styling for each of the boxes in index */
+.home-box { /* Styling for each of the boxes in home */
   border-radius: 10px;
   border: solid 2px black;
   padding: 20px;
