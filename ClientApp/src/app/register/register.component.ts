@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../login/auth.service'; 
 
 @Component({
   selector: 'app-register',
@@ -12,8 +13,24 @@ export class RegisterComponent {
     confirmPassword: ''
   };
 
+  constructor(private authService: AuthService) { }
+
   onRegister() {
-    console.log(this.user);
+    if (this.user.password === this.user.confirmPassword) {
+      this.authService.register(this.user.email, this.user.password).subscribe({
+        next: (response) => {
+          console.log('Registration successful:', response);
+          // show success message
+        },
+        error: (error) => {
+          console.error('Registration failed:', error);
+          // Show error message
+        }
+      });
+    } else {
+      console.error('Passwords do not match');
+      // Show some error to the user
+    }
   }
 }
 
