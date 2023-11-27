@@ -1,34 +1,45 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../login/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
-  username: string;
-  password: string;
-  error: string;
+
+  userName!: string;
+  password!: string;
+  formData!: FormGroup;
+  error?: string; 
+
 
   constructor(private authService: AuthService, private router: Router) { }
 
+
   ngOnInit() {
-    // redirect to home if already logged in
-    if (this.authService.currentUserValue) {
-      this.router.navigate(['/']);
-    }
+    this.formData = new FormGroup({
+      userName: new FormControl("admin"),
+      password: new FormControl("admin"),
+    });
   }
 
-  login() {
-    this.authService.login(this.username, this.password)
-      .subscribe(
-        data => {
-          this.router.navigate(['/home']); // navigate to the home or dashboard route
-        },
-        error => {
-          this.error = error;
-        });
+  onClickSubmit(data: any) {
+    this.userName = data.userName;
+    this.password = data.password;
+
+    console.log("Login page: " + this.userName);
+    console.log("Login page: " + this.password);
+
+    this.authService.login(this.userName, this.password)
+      .subscribe(data => {
+        console.log("Is Login Success: " + data);
+
+        if (data) this.router.navigate(['/expenses']);
+
+      });
   }
 }

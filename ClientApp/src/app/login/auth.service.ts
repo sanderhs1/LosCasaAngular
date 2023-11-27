@@ -1,37 +1,32 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { tap, delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
-  private currentUserSubject: BehaviorSubject<any>;
-  public currentUser: Observable<any>;
+  isUserLoggedIn: boolean = false;
 
-  constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
-    this.currentUser = this.currentUserSubject.asObservable();
+  login(userName: string, password: string): Observable<boolean> {
+    console.log(userName);
+    console.log(password);
+    this.isUserLoggedIn = userName == 'admin' && password == 'admin';
+    localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false");
+
+    return of(this.isUserLoggedIn).pipe(
+      delay(1000),
+      tap(val => {
+        console.log("Is User Authentication is successful: " + val);
+      })
+
+    );
   }
 
-  public get currentUserValue() {
-    return this.currentUserSubject.value;
-  }
-
-  login(username: string, password: string) {
-    return this.http.post<any>(`/api/User/Login`, { username, password })
-      .pipe(map(user => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
-        return user;
-      }));
-  }
-
-  logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
-  }
+    logout(): void {
+      this.isUserLoggedIn = false;
+      localStorage.removeItem('isUserLoggedIn');
+    }
+    constructor() { }
 }

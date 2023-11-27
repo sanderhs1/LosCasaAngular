@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { ExpenseGuard } from './expenseguard/expense.guard'; 
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -12,7 +13,6 @@ import { ListingDetailComponent } from './listings/listingdetail.component';
 import { ConvertToCurrency } from './shared/convert-to-currency.pipe';
 import { ListingformComponent } from './listings/listingform.component';
 import { RentsComponent } from './rents/rents.component';
-import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 
@@ -29,8 +29,8 @@ import { LogoutComponent } from './logout/logout.component';
     ConvertToCurrency,
     ListingformComponent,
     RentsComponent,
-    RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -44,13 +44,12 @@ import { LogoutComponent } from './logout/logout.component';
       { path: 'listingform', component: ListingformComponent },
       { path: 'listingform/:mode/:id', component: ListingformComponent },
       { path: 'rents/:id', component: RentsComponent },
-      { path: 'register', component: RegisterComponent },
-      { path: 'login', component: LoginComponent },
+      { path: 'login', component: LoginComponent, canActivate: [ExpenseGuard] },
       { path: 'logout', component: LogoutComponent },
       { path: '**', redirectTo: '', pathMatch: 'full' },
     ])
   ],
-  providers: [],
+providers: [ExpenseGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
