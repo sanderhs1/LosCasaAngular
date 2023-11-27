@@ -10,7 +10,31 @@ thead {
 }
 
 .hover-effect:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
   cursor: pointer;
   /* Add any other hover styles you want */
 }
+#createbutton{
+    margin-bottom: 20px;
+}
+
+img{
+max-width: 100%;
+height: 300px;
+}
+
+.card-body {
+  max-width: 100%;
+  height: auto;
+  padding: 30px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+
+}
+
+.card{
+    margin-top: 50px;
+   
+}
+
+

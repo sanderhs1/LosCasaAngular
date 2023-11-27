@@ -10,9 +10,15 @@
   </div>
 </div>
 
+<div class="row mt-3">
+  <div class="col-md-12 text-center">
+    <button class="btn btn-primary" id="createbutton" [routerLink]="['/listingform', 'create', -1]">Create New Listing</button>
+  </div>
+</div>
+
 <div class='row'>
   <div *ngFor='let listing of filteredListings' class='col-md-4'>
-    <div class='card' style="width: 20rem;" (click)="navigateToListingDetails(listing.ListingId)" [ngClass]="{'hover-effect': true}">
+    <div class='card'  (click)="navigateToListingDetails(listing.ListingId)" [ngClass]="{'hover-effect': true}">
       <img class='card-img-top' [src]='listing.ImageUrl' alt='Card image cap'>
       <div class='card-body'>
         <h5 class='card-title'>{{ listing.Name }}</h5>
@@ -25,9 +31,5 @@
   </div>
 </div>
 
-<div class="row mt-3">
-  <div class="col-md-12 text-center">
-    <button class="btn btn-primary" [routerLink]="['/listingform', 'create', -1]">Create New Listing</button>
-  </div>
-</div>
+
 
