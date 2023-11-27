@@ -60,6 +60,7 @@ code {
 
   .introduction img {
     max-width: 100%;
+    margin-bottom: 10px;
   }
 
   .introduction a {
@@ -70,3 +71,23 @@ code {
     .introduction a:hover {
       color: darkgray;
     }
+
+.home-text {
+  text-align: center;
+  padding: 30px;
+  margin: 20px;
+  box-shadow: 10px 14px 8px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+.home-text:hover{
+    background-color: #313131;
+    color: white;
+}
+
+
+@media (max-width: 1024px) {
+  .introduction {
+    grid-template-columns: 1fr; /* Grid styling that has one box in each row on small screen */
+  }
+}
