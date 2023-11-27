@@ -1,3 +1,4 @@
+# FRIST 30.11 KL 1
 # LosCasaAngular
 
 Hva må gjøres:
@@ -11,4 +12,4 @@ Hva må gjøres:
 - Input validation
 - Unit testing
 - Dokumentasjon ( Oppdatere dokumentasjon )
-- - Authentication logging (hvis tid må ikke gjøres)
+- Authentication logging (hvis tid må ikke gjøres)
