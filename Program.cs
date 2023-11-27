@@ -1,7 +1,8 @@
-
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using LosCasaAngular.DAL;
 using LosCasaAngular.Models;
+using LosCasaAngular.Controllers;
 using Serilog;
 using Serilog.Events;
 
@@ -14,6 +15,16 @@ builder.Services.AddDbContext<ListingDbContext>(options => {
     options.UseSqlite(
         builder.Configuration["ConnectionStrings:ListingDbContextConnection"]);
 });
+
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<ListingDbContext>() // Use the same DbContext for Identity
+    .AddDefaultTokenProviders();
+
+
+builder.Services.AddScoped<IUserService, UserService>();
+
+
 
 builder.Services.AddScoped<InterListingRepository, ListingRepository>();
 
@@ -39,6 +50,8 @@ if (app.Environment.IsDevelopment())
 app.UseStaticFiles();
 app.UseRouting();
 
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
