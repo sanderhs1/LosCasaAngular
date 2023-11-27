@@ -2,8 +2,8 @@
 # LosCasaAngular 
 
 Hva må gjøres:
-1. Må route "confirm rent" knapp til rentDetails
 2. RentDetails siden etter man har rentet
+4. Må route "confirm rent" knapp til rentDetails
 3. Filter pris
 4. Flere variabler i Listings
 5. Design
