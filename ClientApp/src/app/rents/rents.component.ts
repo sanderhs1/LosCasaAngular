@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RentService } from './rents.service';
+import { ListingService } from '../listings/listings.service';
+import { IListing } from '../listings/listing';
 import { IRent } from './rent';
 
 @Component({
@@ -13,13 +15,15 @@ import { IRent } from './rent';
 export class RentsComponent implements OnInit {
   rentForm: FormGroup;
   listingId!: number;
+  listingPrice!: number;
   userId!: number; 
 
 
-  dailyRate: number = 100;
+
   constructor(
     private fb: FormBuilder,
     private rentService: RentService,
+    private listingService: ListingService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -36,14 +40,20 @@ export class RentsComponent implements OnInit {
         throw new Error('No Listing ID provided in the route.');
       }
       this.listingId = +id;
+      this.loadListingPrice(this.listingId);
     });
+  }
+  loadListingPrice(listingId: number): void {
+    this.listingService.getListingById(listingId).subscribe((listing: IListing) => {
+      this.listingPrice = listing.Price;
+    })
   }
 
 
   calculatePrice(): number {
     const startDate = this.rentForm.value.startDate;
     const endDate = this.rentForm.value.endDate;
-    if (startDate && endDate) {
+    if (startDate && endDate && this.listingPrice) {
       const start = new Date(startDate);
       const end = new Date(endDate);
       if (start >= end) {
@@ -51,8 +61,8 @@ export class RentsComponent implements OnInit {
         return 0
       }
       const diff = end.getTime() - start.getTime();
-      const days = diff / (1000 * 60 * 60 * 24); // Convert milliseconds to days
-      return days * this.dailyRate;
+      const days = Math.ceil (diff/(1000 * 60 * 60 * 24)); // Convert milliseconds to days
+      return days * this.listingPrice;
     }
     return 0;
   }
