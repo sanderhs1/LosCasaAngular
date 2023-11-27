@@ -2,7 +2,6 @@
 # LosCasaAngular
 
 Hva må gjøres:
-- Rentknappen må lagre til database
 - Må route "confirm rent" knapp til rentDetails
 - RentDetails siden etter man har rentet
 - Design
