@@ -1,4 +1,4 @@
-# FRIST 30.11.23 KL 12
+# FRIST 30.11.23 KL 12.00
 # LosCasaAngular 
 
 Hva må gjøres:
@@ -12,3 +12,4 @@ Hva må gjøres:
 - Unit testing
 - Dokumentasjon ( Oppdatere dokumentasjon )
 - Authentication logging (hvis tid må ikke gjøres)
+- Lage gruppe på Inspera
