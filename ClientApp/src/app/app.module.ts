@@ -44,7 +44,7 @@ import { LogoutComponent } from './logout/logout.component';
       { path: 'listingform', component: ListingformComponent },
       { path: 'listingform/:mode/:id', component: ListingformComponent },
       { path: 'rents/:id', component: RentsComponent },
-      { path: 'login', component: LoginComponent, canActivate: [ExpenseGuard] },
+      { path: 'login', component: LoginComponent },
       { path: 'logout', component: LogoutComponent },
       { path: '**', redirectTo: '', pathMatch: 'full' },
     ])
