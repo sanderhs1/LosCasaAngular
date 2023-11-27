@@ -76,18 +76,21 @@ code {
   padding: 30px;
   margin: 30px;
   box-shadow: 10px 14px 8px 10px rgba(0, 0, 0, 0.2);
+  background-color: #313131;
+  color: white;
 
 }
 
 .home-text:hover{
-    background-color: #313131;
-    color: white;
 }
 
 
 @media (max-width: 1024px) {
   .introduction {
     grid-template-columns: 1fr; /* Grid styling that has one box in each row on small screen */
+  }
+  .listings {
+    grid-template-columns: 1fr !important;
   }
 }
 
@@ -101,7 +104,8 @@ code {
 .listings{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: 40px;
+    margin: 20px;
 }
 
   .listings img {
@@ -118,7 +122,10 @@ code {
   color: white;
   text-align: center;
   padding: 10px;
-  margin: 10px;
+  margin: 20px;
+}
+.listings-box:hover{
+  transform: scale(1.03);
 }
 
 .listings-box a{
@@ -130,3 +137,26 @@ code {
     color: gray;
 }
 
+.container-end li {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 24px;
+  line-height: 1.8;
+  /* Use flex for hanging bullets */
+  /* Remove 'display' for inline bullets */
+  display: flex;
+}
+
+  .container-end {
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.container-end h1{
+  text-align: center;
+  font-style: italic;
+  border-bottom: 1px solid #313131;
+  padding-bottom: 30px;
+  margin-bottom: 40px;
+}
