@@ -1,4 +1,4 @@
-# FRIST 30.11 KL 12
+# FRIST 30.11.23 KL 12
 # LosCasaAngular
 
 Hva må gjøres:
