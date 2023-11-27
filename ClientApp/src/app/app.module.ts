@@ -15,6 +15,7 @@ import { ListingformComponent } from './listings/listingform.component';
 import { RentsComponent } from './rents/rents.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { RentDetailsComponent } from './RentDetails/rentdetails.component';
 
 
 
@@ -30,7 +31,8 @@ import { LogoutComponent } from './logout/logout.component';
     ListingformComponent,
     RentsComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    RentDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -46,6 +48,7 @@ import { LogoutComponent } from './logout/logout.component';
       { path: 'rents/:id', component: RentsComponent },
       { path: 'login', component: LoginComponent },
       { path: 'logout', component: LogoutComponent },
+      { path: 'RentDetails', component: RentDetailsComponent },
       { path: '**', redirectTo: '', pathMatch: 'full' },
     ])
   ],
