@@ -92,6 +92,12 @@ code {
   }
 }
 
+#listings-title{
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+}
+
 .listings{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -103,7 +109,23 @@ code {
     max-width: 100%;
     height: auto;
     border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border: solid gray 5px;
+    border-radius: 10px 10px 0 0; /* Specific radius for top corners */
   }
+
+.listings-box {
+  background-color: #313131;
+  border-radius: 10px; /* Specific radius for top corners */
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.listings-box a{
+    text-decoration: none;
+    color: white;
+}
+
+.listings-box a:hover{
+    color: gray;
+}
 
