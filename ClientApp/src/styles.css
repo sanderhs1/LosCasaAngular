@@ -15,7 +15,7 @@ code {
   border-color: #1861ac;
 }
 .hometitle { /* Background-image */
-  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url(https://images6.alphacoders.com/117/1178160.jpg); /* https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.oslomet.no%2Fen%2Fabout%2Fkjeller-campus&psig=AOvVaw3JhxQVrJEcwKteNS868h4O&ust=1700672023828000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJijxJHH1YIDFQAAAAAdAAAAABAE - Oslomet.no*/
+  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url(https://www.theparkwardvillage.com/wp-content/uploads/2021/05/14_Residence00_Living-3840x2160.jpg.jpg); /* https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.oslomet.no%2Fen%2Fabout%2Fkjeller-campus&psig=AOvVaw3JhxQVrJEcwKteNS868h4O&ust=1700672023828000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJijxJHH1YIDFQAAAAAdAAAAABAE - Oslomet.no*/
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -42,8 +42,7 @@ code {
 
 .home-box { /* Styling for each of the boxes in home */
   border-radius: 10px;
-  border: solid 2px black;
-  padding: 20px;
+  padding: 30px;
   background-color: #ffffff;
   text-align: center;
 }
@@ -60,7 +59,7 @@ code {
 
   .introduction img {
     max-width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   .introduction a {
@@ -75,7 +74,7 @@ code {
 .home-text {
   text-align: center;
   padding: 30px;
-  margin: 20px;
+  margin: 30px;
   box-shadow: 10px 14px 8px 10px rgba(0, 0, 0, 0.2);
 
 }
@@ -95,7 +94,8 @@ code {
 #listings-title{
     text-align: center;
     margin: 20px;
-    padding: 20px;
+    padding: 40px;
+ 
 }
 
 .listings{
@@ -118,6 +118,7 @@ code {
   color: white;
   text-align: center;
   padding: 10px;
+  margin: 10px;
 }
 
 .listings-box a{
@@ -129,3 +130,17 @@ code {
     color: gray;
 }
 
+
+
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+  width: 100%;
+}
+
+
+.mapouter {
+  position: relative;
+  text-align: right;
+  width: 100%;
+}
