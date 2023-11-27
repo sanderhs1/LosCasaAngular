@@ -1,5 +1,5 @@
 # FRIST 30.11.23 KL 12
-# LosCasaAngular
+# LosCasaAngular / Forum
 
 Hva må gjøres:
 1. Må route "confirm rent" knapp til rentDetails
