@@ -2,13 +2,13 @@
 # LosCasaAngular
 
 Hva må gjøres:
-- Må route "confirm rent" knapp til rentDetails
-- RentDetails siden etter man har rentet
-- Filter pris
-- Design
-- Sidekommentarer
-- Flere variabler i Listings
-- Input validation
+1. Må route "confirm rent" knapp til rentDetails
+2. RentDetails siden etter man har rentet
+3. Filter pris
+4. Flere variabler i Listings
+5. Design
+6. Input validation
+7. Sidekommentarer 
 - Unit testing
 - Dokumentasjon ( Oppdatere dokumentasjon )
 - Authentication logging (hvis tid må ikke gjøres)
