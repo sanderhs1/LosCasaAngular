@@ -1,67 +1,65 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using LosCasaAngular.Models;
+using LosCasaAngular.Services;
+using System;
 
-
-namespace LosCasaAngular.Controllers;
-
-[ApiController]
 [Route("api/[controller]")]
+[ApiController]
 public class AuthController : ControllerBase
 {
-    private readonly IUserService _userService;
+    private readonly IAuthService _authService;
 
-    public AuthController(IUserService userService)
+    public AuthController(IAuthService authService)
     {
-        _userService = userService;
-    }
-
-
-    [HttpPost("login")]
-    public async Task<ActionResult> Login([FromBody] UserLoginDto userLoginDto)
-
-    {
-        bool isValidUser = true; // This should be the result of your authentication check
-
-        if (isValidUser)
-        {
-
-            var token = "synchronous_token_generation";
-            return Ok(new { Token = token });
-        }
-        else
-        {
-
-            return Unauthorized();
-        }
+        _authService = authService;
     }
 
     [HttpPost("register")]
-    public async Task<ActionResult> Register([FromBody] UserLoginDto userLoginDto)
+    public async Task<IActionResult> Register(UserRegisterDto userRegisterDto)
     {
-        try
+        if (!ModelState.IsValid)
         {
-            // Replace this with actual validation
-            if (string.IsNullOrWhiteSpace(userLoginDto.Email) || string.IsNullOrWhiteSpace(userLoginDto.Password))
-            {
-                return BadRequest("Email and password are required.");
-            }
+            return BadRequest(ModelState);
+        }
 
-            // Replace this with the actual logic to create a user
-            var result = await _userService.Register(userLoginDto.Email, userLoginDto.Password);
-            if (result)
-            {
-                return Ok(new { Message = "Registration successful" });
-            }
-            else
-            {
-                return BadRequest("Registration failed.");
-            }
-        }
-        catch (Exception ex)
+        var result = await _authService.RegisterUserAsync(userRegisterDto);
+
+        if (result.Success)
         {
-            // Log the exception
-            return StatusCode(500);
+            return Ok(new { Message = "Registration successful", UserId = result.UserId });
         }
+
+        return BadRequest(new { Message = result.Errors });
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login(UserLoginDto userLoginDto)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var result = await _authService.LoginUserAsync(userLoginDto);
+
+        if (result.Success)
+        {
+            var tokenString = _authService.GenerateJwtToken(result.User);
+            return Ok(new { Token = tokenString, Message = "Login successful" });
+        }
+
+        return BadRequest(new { Message = "Login failed" });
+    }
+
+    [HttpPost("logout")]
+    public IActionResult Logout()
+    {
+        // Assuming your logout logic doesn't require server-side handling 
+        // since JWT tokens are stateless. But if you maintain a token blacklist or 
+        // manage sessions, you would handle that here.
+
+        // No content indicates a successful request with no body to return
+        return NoContent();
     }
 }

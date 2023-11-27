@@ -22,8 +22,6 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddDefaultTokenProviders();
 
 
-builder.Services.AddScoped<IUserService, UserService>();
-
 
 
 builder.Services.AddScoped<InterListingRepository, ListingRepository>();

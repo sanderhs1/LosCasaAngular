@@ -14,6 +14,10 @@ import { ListingformComponent } from './listings/listingform.component';
 import { RentsComponent } from './rents/rents.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -41,7 +45,8 @@ import { LoginComponent } from './login/login.component';
       { path: 'listingform/:mode/:id', component: ListingformComponent },
       { path: 'rents/:id', component: RentsComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'login', component: LoginComponent }, // Login route added here
+      { path: 'login', component: LoginComponent },
+      { path: 'logout', component: LogoutComponent },
       { path: '**', redirectTo: '', pathMatch: 'full' },
     ])
   ],
