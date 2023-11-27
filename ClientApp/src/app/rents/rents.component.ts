@@ -67,12 +67,16 @@ export class RentsComponent implements OnInit {
     return 0;
   }
 
+
+
+  // ... (rest of your component code)
+
   rentListing(): void {
     if (this.rentForm.valid) {
       const price = this.calculatePrice();
       const newRent: IRent = {
         listingId: this.listingId,
-        userId: 1, // Set the userId to 1 (or any other desired value)
+        userId: this.userId, // Use the current userId
         startDate: new Date(this.rentForm.value.startDate),
         endDate: new Date(this.rentForm.value.endDate),
         price: price
@@ -81,6 +85,8 @@ export class RentsComponent implements OnInit {
       this.rentService.createRent(newRent).subscribe({
         next: (rent) => {
           console.log('Rent created successfully', rent);
+          // Increment userId for the next submission
+          this.userId++;
           this.router.navigate(['/']); // Navigate to the desired route after success
         },
         error: (error) => {
