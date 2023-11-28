@@ -10,6 +10,7 @@ Hva må gjøres:
 6. Input validation
 7. Sidekommentarer 
 8. Unit testing
+9. proxy.conf
    
 - Dokumentasjon ( Oppdatere dokumentasjon )
 - Authentication logging (hvis tid må ikke gjøres)
