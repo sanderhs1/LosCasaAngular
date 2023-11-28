@@ -5,7 +5,7 @@ Hva må gjøres:
 1. Må route "confirm rent" knapp til rentDetails
 2. RentDetails siden etter man har rentet
 3. Filter pris
-4. Flere variabler i Listings
+4. Flere variabler i Listings (FERDIG) (Men de brukes ikke ordentlig noe sted)
 5. Design
 6. Input validation
 7. Sidekommentarer 
