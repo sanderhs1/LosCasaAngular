@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RentService } from '../rents/rents.service';
+import { IRent } from '../rents/rent';
 
 @Component({
   selector: 'app-rentdetails',
@@ -6,29 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rentdetails.component.css']
 })
 export class RentDetailsComponent implements OnInit {
-  // Example property
-  rentDetails: any; // You might want to replace 'any' with the actual type of your rent details
+  rents: IRent[] = [];
 
-  constructor() { }
+  constructor(private rentService: RentService) { }
 
   ngOnInit(): void {
-    // Example initialization logic
-    this.fetchRentDetails(); // Assume you have a method to fetch rent details
+    console.log('RentDetailsComponent ngOnInit');
+    this.loadRents();
   }
 
-  // Example method to fetch rent details
-  private fetchRentDetails(): void {
-    // You can make an HTTP request or get data from a service
-    // For example purposes, I'll just set some dummy data
-    this.rentDetails = {
-      property: 'Sample Property',
-      rentAmount: 1000,
-      // Add more properties as needed
-    };
-  }
-
-  // Example method to perform some action
-  public doSomething(): void {
-    // Your logic here
+  loadRents(): void {
+    console.log('Loading rents...');
+    this.rentService.getRents().subscribe(
+      (rents: IRent[]) => {
+        console.log('Rents loaded successfully:', rents);
+        this.rents = rents;
+      },
+      (error) => {
+        console.error('Error loading rents:', error);
+      }
+    );
   }
 }
