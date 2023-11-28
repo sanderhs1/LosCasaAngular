@@ -1,5 +1,5 @@
 <div *ngIf="rents.length > 0">
-  <h2>List of Rents</h2>
+  <h2 class="rent-details-title">List of Rents:</h2>
   <ul>
     <li *ngFor="let rent of rents" class="rentids">
       Rent ID: {{ rent.rentId }}, Listing ID: {{ rent.listingId }}, User ID: {{ rent.userId }}, Price: {{ rent.price }}

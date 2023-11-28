@@ -1,13 +1,15 @@
 body {
 }
 
+.rent-details-title{
+    text-align: center;
+}
 /* Add this CSS to your styles file */
 .rentids {
   border-bottom: 1px solid #ccc; /* Add a border between li elements */
   padding: 10px; /* Add some padding for spacing */
   margin: 0; /* Remove default margin */
   list-style-type: none; /* Remove bullet points for list items */
-  /* Add box shadow for a nice effect */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
   padding: 20px;
