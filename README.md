@@ -2,14 +2,13 @@
 # LosCasaAngular 
 
 Hva må gjøres:
-1. Må route "confirm rent" knapp til rentDetails
-2. RentDetails siden etter man har rentet
-3. Designe Listing Variabler
-4. Design
-5. Input validation
-6. Sidekommentarer 
-7. Unit testing
-8. proxy.conf
+1 Hente listing info til rentdetails, siden for å gi den mer info
+2. Designe Listing Variabler
+3. Design
+4. Input validation
+5. Sidekommentarer 
+6. Unit testing
+7. proxy.conf
    
 - Dokumentasjon ( Oppdatere dokumentasjon )
 - Authentication logging (hvis tid må ikke gjøres)
