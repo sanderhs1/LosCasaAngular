@@ -57,3 +57,8 @@ button:hover{
 img:hover{
   transform: scale(1.03)
 }
+@media (max-width: 1024px) {
+  .listing-detail {
+    grid-template-columns: 1fr !important;
+  }
+}
