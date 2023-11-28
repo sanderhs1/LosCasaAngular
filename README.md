@@ -2,7 +2,7 @@
 # LosCasaAngular 
 
 Hva må gjøres:
-1 Hente listing info til rentdetails, siden for å gi den mer info
+1. Hente listing info til rentdetails, siden for å gi den mer info
 2. Designe Listing Variabler
 3. Design
 4. Input validation
