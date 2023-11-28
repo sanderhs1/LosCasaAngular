@@ -6,4 +6,8 @@ export interface IListing {
   ImageUrl: string;
   AdditionalImageUrl?: string;
   displayImage: boolean;
+  Rooms: number;
+  Toilets: number;
+  Area: number;
+  Address: string;
 }

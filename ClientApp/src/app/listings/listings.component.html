@@ -30,6 +30,10 @@
         <h5 class='card-title'>{{ listing.Name }}</h5>
         <p class='card-text'>{{ listing.Description }}</p>
         <p class='card-text'>Price: {{ listing.Price | convertToCurrency: 'kr.' }}</p>
+        <p class="listing-rooms">{{ "Antall Rom:" + " " + listing.Rooms }}</p>
+        <p class="listing-toilets">{{ "Antall Toalett: " + listing.Toilets }}</p>
+        <p class="listing-area">{{ "KvadratMeter: " + listing.Area }}</p>
+        <p class="listing-address">{{"Adresse: " + listing.Address }}</p>
         <a [routerLink]="['/listingform', 'edit', listing.ListingId]" class='btn btn-primary'>Update</a>
         <a (click)="deleteListing(listing)" class='btn btn-danger'>Delete</a>
       </div>
