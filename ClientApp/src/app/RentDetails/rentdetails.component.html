@@ -3,16 +3,18 @@
   <h2 class="combined-details-title">Combined Details:</h2>
   <ul>
     <li *ngFor="let combinedDetail of combinedDetails" class="combined-details">
-      Rent ID: {{ combinedDetail.rent.rentId }},
-      Listing ID: {{ combinedDetail.rent.listingId }},
-      User ID: {{ combinedDetail.rent.userId }},
-      Price: {{ combinedDetail.rent.price }},
-      <!-- Add more details as needed -->
-      Listing Details:
-      Name: {{ combinedDetail.listing.Name }},
-      Price: {{ combinedDetail.listing.Price }},
-      Description: {{ combinedDetail.listing.Description }},
-      <!-- Add more details as needed -->
+      <ul>
+        <li>Rent ID: {{ combinedDetail.rent.rentId }}</li>
+        <li>Listing ID: {{ combinedDetail.rent.listingId }}</li>
+        <li>Price: {{ combinedDetail.rent.price }}</li>
+        <li>Listing Details:</li>
+        <li>Name: {{ combinedDetail.listing.Name }}</li>
+        <li>Price: {{ combinedDetail.listing.Price }}</li>
+        <li>Description: {{ combinedDetail.listing.Description }}</li>
+        <li><img [src]="combinedDetail.listing.ImageUrl" alt="Image of {{ combinedDetail.listing.Name }}" class="listing-image"></li>
+
+        <!-- Add more details as needed -->
+      </ul>
     </li>
   </ul>
 </div>
