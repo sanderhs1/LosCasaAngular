@@ -2,7 +2,7 @@
 # LosCasaAngular 
 
 Hva må gjøres:
-1. Hente listing info til rentdetails, siden for å gi den mer info
+1. Legge til verdier i listing.ts, Legge til verdier i rentdetails.component.html, style den (Soban)
 2. Designe Listing Variabler
 3. Design
 4. Sidekommentarer 
