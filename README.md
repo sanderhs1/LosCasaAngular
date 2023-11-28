@@ -2,7 +2,7 @@
 # LosCasaAngular 
 
 Hva må gjøres:
-- Verdier i Listing.ts og Arrow keys
+- Arrow keys
 - Design 
 - Side comments
 - Unit testing
