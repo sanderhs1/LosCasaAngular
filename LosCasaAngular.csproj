@@ -31,7 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\expenseguard\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 
