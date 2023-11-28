@@ -6,13 +6,13 @@
       <ul>
         <li>Rent ID: {{ combinedDetail.rent.rentId }}</li>
         <li>Listing ID: {{ combinedDetail.rent.listingId }}</li>
-        <li>Price: {{ combinedDetail.rent.price }}</li>
-        <li>Listing Details:</li>
+        <li>Totalprice: {{ combinedDetail.rent.price }}</li>
         <li>Name: {{ combinedDetail.listing.Name }}</li>
-        <li>Price: {{ combinedDetail.listing.Price }}</li>
+        <li>PricePerNight: {{ combinedDetail.listing.Price }}</li>
         <li>Description: {{ combinedDetail.listing.Description }}</li>
+        <li>StartDate: {{ combinedDetail.rent.startDate }}</li>
+        <li>EndDate: {{ combinedDetail.rent.endDate }}</li>
         <li><img [src]="combinedDetail.listing.ImageUrl" alt="Image of {{ combinedDetail.listing.Name }}" class="listing-image"></li>
-
         <!-- Add more details as needed -->
       </ul>
     </li>
