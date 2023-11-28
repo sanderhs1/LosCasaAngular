@@ -9,7 +9,7 @@ Hva må gjøres:
 5. Design
 6. Input validation
 7. Sidekommentarer 
-- Unit testing
+8. Unit testing
 - Dokumentasjon ( Oppdatere dokumentasjon )
 - Authentication logging (hvis tid må ikke gjøres)
 - Lage gruppe på Inspera
