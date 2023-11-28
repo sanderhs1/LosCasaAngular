@@ -2,14 +2,12 @@
 # LosCasaAngular 
 
 Hva må gjøres:
-1. Legge til verdier i listing.ts, Legge til verdier i rentdetails.component.html, style den (Soban)
-2. Designe Listing Variabler
-3. Design
-4. Sidekommentarer 
-5. Unit testing
-6. proxy.conf
-7. Mindre skjermer
-8. Dokumentasjon ( Oppdatere dokumentasjon )
-
+- Verdier i Listing.ts og Arrow keys
+- Design 
+- Side comments
+- Unit testing
+- Proxy.conf (Se modul)
+- Responsiv (Mindre skjermer)
+- Dokumentasjon
 - Authentication logging (hvis tid må ikke gjøres)
 
