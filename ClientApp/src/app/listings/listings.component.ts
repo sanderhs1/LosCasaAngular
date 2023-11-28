@@ -87,9 +87,10 @@ export class ListingsComponent implements OnInit {
     return filteredListings;
   }
 
-  toggleImage(): void {
-    this.displayImage = !this.displayImage;
+  toggleImage(listing: IListing): void {
+    listing.displayImage = !listing.displayImage;
   }
+
 
   navigateToListingform(): void {
     this._router.navigate(['/listingform']);

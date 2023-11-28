@@ -21,9 +21,10 @@
 
 <div class='row'>
   <div *ngFor='let listing of filteredListings' class='col-md-4'>
-    <div class='card'  (click)="navigateToListingDetails(listing.ListingId)" [ngClass]="{'hover-effect': true}">
-      <img class='card-img-top' [src]='listing.ImageUrl' alt='Card image cap'>
-      <div class='card-body'>
+    <div class='card' [ngClass]="{'hover-effect': true}">
+      <img class='card-img-top' [src]='listing.displayImage ? listing.ImageUrl : listing.AdditionalImageUrl' alt='Card image cap'>
+      <button (click)="toggleImage(listing)">Toggle Image</button>
+      <div class='card-body' (click)="navigateToListingDetails(listing.ListingId)">
         <h5 class='card-title'>{{ listing.Name }}</h5>
         <p class='card-text'>{{ listing.Description }}</p>
         <p class='card-text'>Price: {{ listing.Price | convertToCurrency: 'kr.' }}</p>

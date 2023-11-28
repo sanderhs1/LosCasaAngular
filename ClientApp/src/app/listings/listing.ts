@@ -5,4 +5,5 @@ export interface IListing {
   Description: string;
   ImageUrl: string;
   AdditionalImageUrl?: string;
+  displayImage: boolean;
 }
