@@ -22,13 +22,13 @@ export class ListingformComponent {
     this.listingForm = _formbuilder.group({
       name: ['', Validators.required],
       price: [0, Validators.required],
-      description: [''],
-      imageUrl: [''],
-      AdditionalImageUrl: [''],
+      description: ['', Validators.required],
+      imageUrl: ['', [Validators.pattern(/^https?:\/\/.+/)]],
+      AdditionalImageUrl: ['', [Validators.pattern(/^https?:\/\/.+/)]],
       Rooms: [0, Validators.required], 
       Toilets: [0, Validators.required],
       Area: [0, Validators.required], 
-      Address: [''] 
+      Address: ['', Validators.required] 
    
     });
   }
