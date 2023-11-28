@@ -1,18 +1,32 @@
 <div class="container">
   <h2>Rent Listing</h2>
   <form [formGroup]="rentForm" (ngSubmit)="rentListing()">
+
     <div class="form-group">
       <label for="startDate">Start Date:</label>
       <input type="date" formControlName="startDate" class="form-control">
+      <div *ngIf="rentForm.get('startDate')?.hasError('required') && rentForm.get('startDate')?.touched" class="text-danger">
+        Start Date is required.
+      </div>
     </div>
+
     <div class="form-group">
       <label for="endDate">End Date:</label>
       <input type="date" formControlName="endDate" class="form-control">
+      <div *ngIf="rentForm.get('endDate')?.hasError('required') && rentForm.get('endDate')?.touched" class="text-danger">
+        End Date is required.
+      </div>
+      <div *ngIf="rentForm.get('endDate')?.hasError('endDateInvalid')" class="text-danger">
+        End Date must be equal to or after Start Date.
+      </div>
     </div>
+
     <div class="form-group">
       <label>Calculated Price:</label>
       <input type="text" [value]="calculatePrice() | convertToCurrency:'NOK'" class="form-control" readonly>
     </div>
+
     <button type="submit" class="btn btn-primary" [disabled]="!rentForm.valid">Confirm Rent</button>
   </form>
+
 </div>

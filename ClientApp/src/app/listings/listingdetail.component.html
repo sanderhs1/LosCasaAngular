@@ -4,10 +4,10 @@
 
     <p class="listing-price">Price: {{ listing.Price | currency:'NOK ':true }}</p>
     <p class="listing-description">{{ listing.Description }}</p>
-    <p class="listing-rooms">{{ "Antall Rom:" + " "+ listing.Rooms }}</p>
-    <p class="listing-toilets">{{ listing.Toilets }}</p>
-    <p class="listing-area">{{ listing.Area }}</p>
-    <p class="listing-address">{{ listing.Address }}</p>    <br />
+    <p class="listing-rooms">{{ "Antall Rom:" + " " + listing.Rooms }}</p>
+    <p class="listing-toilets">{{ "Antall Toalett: " + listing.Toilets }}</p>
+    <p class="listing-area">{{ "KvadratMeter: " + listing.Area }}</p>
+    <p class="listing-address">{{"Adresse: " + listing.Address }}</p>    <br />
     <br />
     <br />
     <br />

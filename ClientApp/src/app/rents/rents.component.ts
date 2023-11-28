@@ -29,7 +29,7 @@ export class RentsComponent implements OnInit {
   ) {
     this.rentForm = this.fb.group({
       startDate: ['', Validators.required],
-      endDate: ['', Validators.required]
+      endDate: ['', Validators.required],
     });
   }
 
