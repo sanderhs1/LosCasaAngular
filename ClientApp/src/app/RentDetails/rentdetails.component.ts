@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { RentService } from '../rents/rents.service';
 import { IRent } from '../rents/rent';
@@ -46,6 +45,30 @@ export class RentDetailsComponent implements OnInit {
           console.error(`Error loading listing details for Rent ID ${rent.rentId}:`, error);
         }
       );
+    }
+  }
+
+  deleteRent(rent: IRent): void {
+    const confirmDelete = confirm(`Are you sure you want to delete this rent? ${rent.rentId}`);
+    if (confirmDelete) {
+      const rentId = rent?.rentId;
+
+      if (rentId !== undefined) {
+        console.log(`Deleting rent with ID: ${rentId}`);
+
+        this.rentService.deleteRent(rentId).subscribe(
+          () => {
+            console.log(`Rent with ID ${rentId} deleted successfully.`);
+            // Reload rents and combined details after deletion
+            this.loadRents();
+          },
+          (error) => {
+            console.error(`Error deleting rent with ID ${rentId}:`, error);
+          }
+        );
+      } else {
+        console.error('Rent ID is undefined.');
+      }
     }
   }
 }

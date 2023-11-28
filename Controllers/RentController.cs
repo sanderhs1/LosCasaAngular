@@ -114,7 +114,7 @@ public class RentController : Controller
     }
 
     // Delete a rent
-    [HttpDelete("{id}")]
+    [HttpDelete("delete/{id}")]
     public async Task<IActionResult> DeleteRent(int id)
     {
         try
