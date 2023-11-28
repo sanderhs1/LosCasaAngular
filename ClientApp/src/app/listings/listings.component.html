@@ -23,7 +23,9 @@
   <div *ngFor='let listing of filteredListings' class='col-md-4'>
     <div class='card' [ngClass]="{'hover-effect': true}">
       <img class='card-img-top' [src]='listing.displayImage ? listing.ImageUrl : listing.AdditionalImageUrl' alt='Card image cap'>
-      <button (click)="toggleImage(listing)">Toggle Image</button>
+      <button class="toggle-button" (click)="toggleImage(listing)">
+        <span class="arrow-icon">&#8594;</span> <!-- Right arrow icon -->
+      </button>
       <div class='card-body' (click)="navigateToListingDetails(listing.ListingId)">
         <h5 class='card-title'>{{ listing.Name }}</h5>
         <p class='card-text'>{{ listing.Description }}</p>
