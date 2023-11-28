@@ -10,7 +10,7 @@ Hva må gjøres:
 6. Unit testing
 7. proxy.conf
 8. Mindre skjermer
-   
-- Dokumentasjon ( Oppdatere dokumentasjon )
+9. Dokumentasjon ( Oppdatere dokumentasjon )
+
 - Authentication logging (hvis tid må ikke gjøres)
-- Lage gruppe på Inspera
+
