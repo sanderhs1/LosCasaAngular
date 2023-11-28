@@ -44,3 +44,4 @@ export class ListingDetailComponent implements OnInit {
     this.location.back();
   }
 }
+

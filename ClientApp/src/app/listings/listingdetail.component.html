@@ -1,18 +1,31 @@
 <div *ngIf="listing" class="listing-detail">
-  <h2>{{ listing.Name }}</h2>
   <div class="listing-info">
-    <p class="listing-price">Price: {{ listing.Price | currency:'USD':true }}</p>
+    <h2>{{ listing.Name }}</h2>
+
+    <p class="listing-price">Price: {{ listing.Price | currency:'NOK ':true }}</p>
     <p class="listing-description">{{ listing.Description }}</p>
-    <p class="listing-rooms">{{ listing.Rooms }}</p>
+    <p class="listing-rooms">{{ "Antall Rom:" + " "+ listing.Rooms }}</p>
     <p class="listing-toilets">{{ listing.Toilets }}</p>
     <p class="listing-area">{{ listing.Area }}</p>
-    <p class="listing-address">{{ listing.Address }}</p>
+    <p class="listing-address">{{ listing.Address }}</p>    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <br />
+
+    <button [routerLink]="['/rents', listing.ListingId]" class="btn btn-success">Rent this Listing</button>
+    <br />
+    <button (click)="goBack()" class="btn btn-primary">Back to Listings</button>
+    <br />
+
+
   </div>
-  <img [src]="listing.ImageUrl" alt="Image of {{ listing.Name }}" class="listing-image">
-  <img [src]="listing.AdditionalImageUrl" alt="Image of {{ listing.Name }}" class="listing-image">
-  <button [routerLink]="['/rents', listing.ListingId]" class="btn btn-success">Rent this Listing</button>
-  <br />
-  <button (click)="goBack()" class="btn btn-primary">Back to Listings</button>
+  <div>
+    <img [src]="listing.ImageUrl" alt="Image of {{ listing.Name }}" class="listing-image">
+    <img [src]="listing.AdditionalImageUrl" alt="Image of {{ listing.Name }}" class="listing-image">
+  </div>
 </div>
 <div *ngIf="!listing" class="no-listing">
   <p>Listing not found.</p>

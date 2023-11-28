@@ -5,7 +5,8 @@ import { ListingService } from './listings.service';
 
 @Component({
   selector: "app-listings-listingform",
-  templateUrl: "./listingform.component.html"
+  templateUrl: "./listingform.component.html",
+  styleUrls: ['./listingform.component.css']
 })
 export class ListingformComponent {
   listingForm: FormGroup;
