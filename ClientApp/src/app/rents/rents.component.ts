@@ -87,7 +87,8 @@ export class RentsComponent implements OnInit {
           console.log('Rent created successfully', rent);
           // Increment userId for the next submission
           this.userId++;
-          this.router.navigate(['/']); // Navigate to the desired route after success
+          this.router.navigate(['/rentdetails', rent.rentId]);
+ // Navigate to the desired route after success
         },
         error: (error) => {
           console.error('Error occurred while creating rent: ', error);

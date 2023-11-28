@@ -15,7 +15,7 @@ import { ListingformComponent } from './listings/listingform.component';
 import { RentsComponent } from './rents/rents.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
-import { RentDetailsComponent } from './RentDetails/rentdetails.component';
+import { RentDetailsComponent } from './rentdetails/rentdetails.component';
 
 
 
@@ -48,7 +48,7 @@ import { RentDetailsComponent } from './RentDetails/rentdetails.component';
       { path: 'rents/:id', component: RentsComponent },
       { path: 'login', component: LoginComponent },
       { path: 'logout', component: LogoutComponent },
-      { path: 'RentDetails', component: RentDetailsComponent },
+      { path: 'rentdetails', component: RentDetailsComponent },
       { path: '**', redirectTo: '', pathMatch: 'full' },
     ])
   ],
