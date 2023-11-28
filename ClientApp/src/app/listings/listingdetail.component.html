@@ -3,8 +3,13 @@
   <div class="listing-info">
     <p class="listing-price">Price: {{ listing.Price | currency:'USD':true }}</p>
     <p class="listing-description">{{ listing.Description }}</p>
+    <p class="listing-rooms">{{ listing.Rooms }}</p>
+    <p class="listing-toilets">{{ listing.Toilets }}</p>
+    <p class="listing-area">{{ listing.Area }}</p>
+    <p class="listing-address">{{ listing.Address }}</p>
   </div>
   <img [src]="listing.ImageUrl" alt="Image of {{ listing.Name }}" class="listing-image">
+  <img [src]="listing.AdditionalImageUrl" alt="Image of {{ listing.Name }}" class="listing-image">
   <button [routerLink]="['/rents', listing.ListingId]" class="btn btn-success">Rent this Listing</button>
   <br />
   <button (click)="goBack()" class="btn btn-primary">Back to Listings</button>

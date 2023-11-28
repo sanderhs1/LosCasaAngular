@@ -4,4 +4,5 @@ export interface IListing {
   Price: number;
   Description: string;
   ImageUrl: string;
+  AdditionalImageUrl?: string;
 }

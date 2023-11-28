@@ -22,7 +22,13 @@ export class ListingformComponent {
       name: ['', Validators.required],
       price: [0, Validators.required],
       description: [''],
-      imageUrl: ['']
+      imageUrl: [''],
+      AdditionalImageUrl: [''],
+      Rooms: [0, Validators.required], 
+      Toilets: [0, Validators.required],
+      Area: [0, Validators.required], 
+      Address: [''] 
+   
     });
   }
 
@@ -81,7 +87,12 @@ export class ListingformComponent {
             name: listing.Name,
             price: listing.Price,
             description: listing.Description,
-            imageUrl: listing.ImageUrl
+            imageUrl: listing.ImageUrl,
+            AdditionalImageUrl: listing.AdditionalImageUrl,
+            Rooms: listing.Rooms || 0, 
+            Toilets: listing.Toilets || 0, 
+            Area: listing.Area || 0, 
+            Address: listing.Address || ''
           });
         },
         (error: any) => {
