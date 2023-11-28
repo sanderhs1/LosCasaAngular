@@ -1,12 +1,21 @@
-<div *ngIf="rents.length > 0">
-  <h2 class="rent-details-title">List of Rents:</h2>
+<!-- combined-details.component.html -->
+<div *ngIf="combinedDetails.length > 0">
+  <h2 class="combined-details-title">Combined Details:</h2>
   <ul>
-    <li *ngFor="let rent of rents" class="rentids">
-      Rent ID: {{ rent.rentId }}, Listing ID: {{ rent.listingId }}, User ID: {{ rent.userId }}, Price: {{ rent.price }}, 
+    <li *ngFor="let combinedDetail of combinedDetails" class="combined-details">
+      Rent ID: {{ combinedDetail.rent.rentId }},
+      Listing ID: {{ combinedDetail.rent.listingId }},
+      User ID: {{ combinedDetail.rent.userId }},
+      Price: {{ combinedDetail.rent.price }},
+      <!-- Add more details as needed -->
+      Listing Details:
+      Name: {{ combinedDetail.listing.Name }},
+      Price: {{ combinedDetail.listing.Price }},
+      Description: {{ combinedDetail.listing.Description }},
       <!-- Add more details as needed -->
     </li>
   </ul>
 </div>
-<div *ngIf="rents.length === 0">
-  <p>No rents available.</p>
+<div *ngIf="combinedDetails.length === 0">
+  <p>No combined details available.</p>
 </div>
