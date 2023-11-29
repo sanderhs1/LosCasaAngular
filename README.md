@@ -2,12 +2,11 @@
 # LosCasaAngular 
 
 - Arrow keys kan bli finere
-- Design (Mangler litt i listing)
-- Side comments (Trenger mer sidecomments i backend)
+- Side comments - backend
 - Unit testing (Tony)
-- Responsiv, Mindre skjermer Listing vanlig trenger
-- Dokumentasjon (Pete og Soban)
+- Responsiv - Listing vanlig trenger?
+- Dokumentasjon - Se over
 - Logging
-
+  
 - Authentication  (Trenger ikke)
 
