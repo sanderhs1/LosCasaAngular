@@ -2,11 +2,11 @@
 # LosCasaAngular 
 
 Hva må gjøres:
-- Arrow keys (Sander)
+- Arrow keys (SOBAN)
 - Design (Sander & Soban)
 - Side comments (Alle)
 - Unit testing (Tony)
-- Proxy.conf, se modul (Sander)
+- Proxy.conf, se modul (SOBAN)
 - Responsiv, Mindre skjermer (Soban)
 - Dokumentasjon (Pete )
 
