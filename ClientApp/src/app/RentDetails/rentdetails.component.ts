@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { RentService } from '../rents/rents.service';
 import { IRent } from '../rents/rent';
 import { ListingService } from '../listings/listings.service';
-import { IListing } from '../listings/listing';
+import { IListing } from '../listings/listing'; // Imports
 
-@Component({
+@Component({ // Components links
   selector: 'app-rentdetails',
   templateUrl: './rentdetails.component.html',
   styleUrls: ['./rentdetails.component.css']
@@ -22,7 +22,7 @@ export class RentDetailsComponent implements OnInit {
     this.loadRents();
   }
 
-  loadRents(): void {
+  loadRents(): void { // Function to load the rents
     this.rentService.getRents().subscribe(
       (rents: IRent[]) => {
         this.rents = rents;
@@ -34,7 +34,7 @@ export class RentDetailsComponent implements OnInit {
     );
   }
 
-  loadCombinedDetails(): void {
+  loadCombinedDetails(): void { // Function to gather det combined details
     this.combinedDetails = [];
     for (const rent of this.rents) {
       this.listingService.getListingById(rent.listingId).subscribe(
@@ -48,7 +48,7 @@ export class RentDetailsComponent implements OnInit {
     }
   }
 
-  deleteRent(rent: IRent): void {
+  deleteRent(rent: IRent): void {  // Function to delete the rent that had been ordered
     const confirmDelete = confirm(`Are you sure you want to delete this rent? ${rent.rentId}`);
     if (confirmDelete) {
       const rentId = rent?.rentId;

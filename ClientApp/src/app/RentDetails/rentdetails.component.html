@@ -4,7 +4,7 @@
   <ul>
     <li *ngFor="let combinedDetail of combinedDetails" class="combined-details">
       <ul>
-        <li>Rent ID: {{ combinedDetail.rent.rentId }}</li>
+        <li>Rent ID: {{ combinedDetail.rent.rentId }}</li><!-- List with all of the details, of the booking -->
         <li>Listing ID: {{ combinedDetail.rent.listingId }}</li>
         <li>Totalprice: {{ combinedDetail.rent.price }}</li>
         <li>Name: {{ combinedDetail.listing.Name }}</li>
@@ -13,11 +13,12 @@
         <li>StartDate: {{ combinedDetail.rent.startDate }}</li>
         <li>EndDate: {{ combinedDetail.rent.endDate }}</li>
         <li><img [src]="combinedDetail.listing.ImageUrl" alt="Image of {{ combinedDetail.listing.Name }}" class="listing-image"></li>
-        <a (click)="deleteRent(combinedDetail.rent)" class='btn btn-danger'>Delete Rent</a>
 
 
         <!-- Add more details as needed -->
       </ul>
+      <a (click)="deleteRent(combinedDetail.rent)" class='btn btn-danger' id="knapp">Delete Rent</a> <!-- Delete button -->
+
     </li>
   </ul>
 </div>
