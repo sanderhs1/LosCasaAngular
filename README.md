@@ -3,7 +3,7 @@
 
 - Side comments : backend
 - Unit testing (Tony)
-- Listing : Kan fikse arrows og reponsivness
+- Listing : Bilde Størrelse
 - Dokumentasjon : Se over
 - Logging
   
