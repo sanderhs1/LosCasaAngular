@@ -30,7 +30,7 @@ export class ListingDetailComponent implements OnInit {
   }
 
 
-  getListingDetails(id: number): void {
+  getListingDetails(id: number): void { // Loading the details for the listing
     this.listingService.getListingById(id).subscribe(
       (listing) => {
         this.listing = listing;

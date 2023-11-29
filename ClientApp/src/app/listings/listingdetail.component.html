@@ -2,7 +2,7 @@
   <div class="listing-info">
     <h2>{{ listing.Name }}</h2>
 
-    <p class="listing-price">Price: {{ listing.Price | currency:'NOK ':true }}</p>
+    <p class="listing-price">Price: {{ listing.Price | currency:'NOK ':true }}</p>  <!-- Every element in the listingdetailed -->
     <p class="listing-description">{{ listing.Description }}</p>
     <p class="listing-rooms">{{ "Antall Rom:" + " " + listing.Rooms }}</p>
     <p class="listing-toilets">{{ "Antall Toalett: " + listing.Toilets }}</p>
@@ -11,16 +11,16 @@
     <br />
     <br />
     <br />
-   
-    <button [routerLink]="['/rents', listing.ListingId]" class="btn btn-success">Rent this Listing</button>
+
+    <button [routerLink]="['/rents', listing.ListingId]" class="btn btn-success">Rent this Listing</button>  <!-- Routing to rents, if the user hits this, they want to rent the listing -->
     <br />
-    <button (click)="goBack()" class="btn btn-primary">Back to Listings</button>
+    <button (click)="goBack()" class="btn btn-primary">Back to Listings</button>  <!-- Go back button -->
     <br />
 
 
   </div>
   <div>
-    <img [src]="listing.ImageUrl" alt="Image of {{ listing.Name }}" class="listing-image">
+    <img [src]="listing.ImageUrl" alt="Image of {{ listing.Name }}" class="listing-image">  <!-- The two images listed -->
     <img [src]="listing.AdditionalImageUrl" alt="Image of {{ listing.Name }}" class="listing-image">
   </div>
 </div>

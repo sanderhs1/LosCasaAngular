@@ -1,23 +1,21 @@
-.listing-detail {
+.listing-detail { /* Listing detail styling, Griding it up making it look nice*/
   margin: 20px;
   padding: 20px;
   border-radius: 8px;
   max-width: 90%;
   text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
 }
 
-.listing-detail{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-}
 
-.listing-detail h2{
+  .listing-detail h2 { /* Fixing the title to make it look nice*/
     text-align: center;
     margin-bottom: 20px;
     font-style: italic;
-}
-.listing-image {
+  }
+.listing-image { /* Sizing and framing the image*/
   max-width: 100%;
   height: auto;
   border-radius: 8px;
@@ -29,7 +27,7 @@
   font-weight: bold;
 }
 
-.listing-price {
+.listing-price { /* Green color because it represents money*/
   font-size: 24px;
   color: green;
 }
@@ -42,8 +40,8 @@
 .btn-primary {
     margin-top: 10px;
 }
-btn btn-success{
-    margin-top: 20px;
+btn btn-success { /* Adjusting the buttons*/
+  margin-top: 20px;
 }
 
 button{
@@ -58,6 +56,7 @@ img:hover{
   transform: scale(1.03)
 }
 @media (max-width: 1024px) {
+  /* Making the grid responsive for small screens.*/
   .listing-detail {
     grid-template-columns: 1fr !important;
   }
