@@ -15,10 +15,6 @@ thead {
   /* Add any other hover styles you want */
 }
 
-img{
-max-width: 100%;
-height: 300px;
-}
 .image-container {
   position: relative;
   overflow: hidden;
@@ -35,6 +31,7 @@ height: 300px;
 }
 .card {
   margin-top: 50px;
+  height: 80%;
 }
 #createbutton {
   margin-bottom: 20px;
