@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosCasaAngular", "LosCasaAngular.csproj", "{D7ABA79B-9434-4D09-B0C1-1CB6221083E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LosCasaAngular", "LosCasaAngular.csproj", "{D7ABA79B-9434-4D09-B0C1-1CB6221083E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XunitTestLosCasaAngular", "..\XunitTestLosCasaAngular\XunitTestLosCasaAngular.csproj", "{77585736-13A9-44A5-AF43-E6CFE7E12A7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D7ABA79B-9434-4D09-B0C1-1CB6221083E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7ABA79B-9434-4D09-B0C1-1CB6221083E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7ABA79B-9434-4D09-B0C1-1CB6221083E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77585736-13A9-44A5-AF43-E6CFE7E12A7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77585736-13A9-44A5-AF43-E6CFE7E12A7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77585736-13A9-44A5-AF43-E6CFE7E12A7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77585736-13A9-44A5-AF43-E6CFE7E12A7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
