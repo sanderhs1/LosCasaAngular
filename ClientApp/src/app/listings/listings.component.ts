@@ -21,7 +21,7 @@ export class ListingsComponent implements OnInit {
   private _nameFilter: string = '';
   private _maxPrice: number | null = null;
 
-  get nameFilter(): string {
+  get nameFilter(): string { // Function for name filter
     return this._nameFilter;
   }
 
@@ -31,7 +31,7 @@ export class ListingsComponent implements OnInit {
     this.filteredListings = this.performFilter();
   }
 
-  get maxPrice(): number | null {
+  get maxPrice(): number | null { // Function for price filter
     return this._maxPrice;
   }
 
@@ -41,7 +41,7 @@ export class ListingsComponent implements OnInit {
     this.filteredListings = this.performFilter();
   }
 
-  deleteListing(listing: IListing): void {
+  deleteListing(listing: IListing): void { // Function for deleting listing
     const confirmDelete = confirm(`Are you sure you want to delete "${listing.Name}"?`);
     if (confirmDelete) {
       this._listingService.deleteListing(listing.ListingId).subscribe(
@@ -58,7 +58,7 @@ export class ListingsComponent implements OnInit {
     }
   }
 
-  getListings(): void {
+  getListings(): void { // Function for getlistings
     this._listingService.getListings().subscribe((data) => {
       console.log('All', JSON.stringify(data));
       this.listings = data;

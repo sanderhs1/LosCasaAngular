@@ -24,7 +24,7 @@
     <div class='card' [ngClass]="{'hover-effect': true}">
       <img class='card-img-top' [src]='listing.displayImage ? listing.ImageUrl : listing.AdditionalImageUrl' alt='Card image cap'>
       <button class="toggle-button" (click)="toggleImage(listing)">
-        <span class="arrow-icon">&#8594;</span> <!-- Right arrow icon -->
+        <span class="arrow-icon">&#8250;</span> <!-- Chevron Right icon -->
       </button>
       <div class='card-body' (click)="navigateToListingDetails(listing.ListingId)">
         <h5 class='card-title'>{{ listing.Name }}</h5>

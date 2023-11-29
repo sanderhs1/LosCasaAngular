@@ -1,4 +1,4 @@
-export interface IListing {
+export interface IListing { // Defined every element from the database which is included in the listing
   ListingId: number;
   Name: string;
   Price: number;
