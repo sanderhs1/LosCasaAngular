@@ -3,7 +3,7 @@
 
 - Side comments : backend
 - Unit testing (Tony)
-- Listing : Bilde Størrelse
+- Endre listing detaljer (gi test navn og sånt)
 - Dokumentasjon : Se over
 - Logging
   
