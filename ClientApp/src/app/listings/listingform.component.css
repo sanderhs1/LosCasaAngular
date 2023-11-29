@@ -6,3 +6,12 @@ label{
   margin-top: 10px;
   margin-bottom: 2px;
 }
+
+
+.right-button{ /*Getting the button to right side*/
+   float: right;
+}
+
+.btn{
+    margin-bottom: 20px;
+}

@@ -13,13 +13,13 @@ export class ListingformComponent {
   isEditMode: boolean = false;
   listingId: number = -1;
 
-  constructor(
+  constructor( 
     private _formbuilder: FormBuilder,
     private _router: Router,
     private _route: ActivatedRoute,
     private _listingService: ListingService
   ) {
-    this.listingForm = _formbuilder.group({
+    this.listingForm = _formbuilder.group({ // Input validation
       name: ['', Validators.required],
       price: [0, Validators.required],
       description: ['', Validators.required],
@@ -33,7 +33,7 @@ export class ListingformComponent {
     });
   }
 
-  onSubmit() {
+  onSubmit() { // Function to submit the create a listing
     console.log("ListingCreate form submitted:");
     console.log(this.listingForm);
     const newListing = this.listingForm.value;
@@ -63,7 +63,7 @@ export class ListingformComponent {
     }
   }
 
-  backToListings() {
+  backToListings() { // Function to go back to listings
     this._router.navigate(['/listings']);
   }
 
@@ -79,7 +79,7 @@ export class ListingformComponent {
     });
   }
 
-  loadListingForEdit(listingId: number) {
+  loadListingForEdit(listingId: number) { // Function for edit
     this._listingService.getListingById(listingId)
       .subscribe(
         (listing: any) => {

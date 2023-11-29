@@ -2,6 +2,7 @@
 
 <div>
   <form *ngIf="listingForm" [formGroup]="listingForm" (ngSubmit)="onSubmit()">
+    <!-- Form for every element-->
 
     <div class="form-group">
       <label for="name">Name:</label>
@@ -78,8 +79,10 @@
 
   </form>
 </div>
-  <button class='btn btn-primary' (click)="onSubmit()" type="submit" [disabled]="listingForm.invalid">
-    {{ isEditMode ? 'Update' : 'Create' }} Listing
-  </button>
-  <button class='btn btn-secondary' (click)="backToListings()">Cancel</button>
+<br />
+<button class='btn btn-primary' (click)="onSubmit()" type="submit" [disabled]="listingForm.invalid">
+  {{ isEditMode ? 'Update' : 'Create' }} Listing
+</button> <!-- Button to submit listing -->
 
+<button class='btn btn-secondary right-button' (click)="backToListings()">Cancel</button><!-- Button to go back -->
+<br />
