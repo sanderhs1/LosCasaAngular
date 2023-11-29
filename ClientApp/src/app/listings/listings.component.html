@@ -1,15 +1,15 @@
-<h1 id="tableLabel">List of Listings ({{viewTitle}} View)</h1>
+<h1 id="tableLabel"> </h1>
 
 <div class="row mb-3">
-  <div class="col-md-2">Filter by:</div>
+  <div class="col-md-2"></div>
   <div class="col-md-4">
     <input type="text" class="form-control" [(ngModel)]="nameFilter" placeholder="Type to filter by name...">
   </div>
   <div class="col-md-4">
-    <input type="number" class="form-control" [(ngModel)]="maxPrice" placeholder="Max Price">
+    <input type="number" class="form-control" [(ngModel)]="maxPrice" placeholder="Type to filter by max price...">
   </div>
   <div class="col-md-2">
-    <h4>Filtered by: {{ nameFilter }} {{ maxPrice !== null ? '| Max Price: ' + maxPrice : '' }}</h4>
+    <h4> {{ nameFilter }} {{ maxPrice !== null ? '| Max Price: ' + maxPrice : '' }}</h4>
   </div>
 </div>
 
@@ -22,10 +22,12 @@
 <div class='row'>
   <div *ngFor='let listing of filteredListings' class='col-md-4'>
     <div class='card' [ngClass]="{'hover-effect': true}">
-      <img class='card-img-top' [src]='listing.displayImage ? listing.ImageUrl : listing.AdditionalImageUrl' alt='Card image cap'>
-      <button class="toggle-button" (click)="toggleImage(listing)">
-        <span class="arrow-icon">&#8250;</span> <!-- Chevron Right icon -->
-      </button>
+      <div class='image-container'>
+        <img class='card-img-top' [src]='listing.displayImage ? listing.ImageUrl : listing.AdditionalImageUrl' alt='Card image cap'>
+        <button class="toggle-button" (click)="toggleImage(listing)">
+          <span class="arrow-icon">&#8250;</span> <!-- Chevron Right icon -->
+        </button>
+      </div>
       <div class='card-body' (click)="navigateToListingDetails(listing.ListingId)">
         <h5 class='card-title'>{{ listing.Name }}</h5>
         <p class='card-text'>{{ listing.Description }}</p>

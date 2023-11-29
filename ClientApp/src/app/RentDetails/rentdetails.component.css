@@ -19,6 +19,8 @@ ul { /* Styling the grid, and making it look clean */
   grid-template-columns: 1fr 1fr;
   margin-top: 10px;
   grid-gap: 35px;
+  width: 100%;
+  height: 80%;
 }
 
 
@@ -49,5 +51,9 @@ li {
   /* Making it responsive */
   ul {
     grid-template-columns: 1fr; /* Grid styling that has one box in each row on small screen */
+  }
+  ul img {
+      width: 40%;
+      height: 70%;
   }
 }

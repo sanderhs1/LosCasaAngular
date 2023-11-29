@@ -41,7 +41,7 @@ export class ListingsComponent implements OnInit {
     this.filteredListings = this.performFilter();
   }
 
-  deleteListing(listing: IListing): void { // Function for deleting listing
+  deleteListing(listing: IListing): void {
     const confirmDelete = confirm(`Are you sure you want to delete "${listing.Name}"?`);
     if (confirmDelete) {
       this._listingService.deleteListing(listing.ListingId).subscribe(
@@ -49,6 +49,9 @@ export class ListingsComponent implements OnInit {
           if (response.success) {
             console.log(response.message);
             this.filteredListings = this.filteredListings.filter((i) => i !== listing);
+
+            // Add navigation logic here
+            this._router.navigate(['/listings']); // Navigate to the ListingsComponent
           }
         },
         (error) => {

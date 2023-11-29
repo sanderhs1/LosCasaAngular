@@ -14,13 +14,14 @@ thead {
   cursor: pointer;
   /* Add any other hover styles you want */
 }
-#createbutton{
-    margin-bottom: 20px;
-}
 
 img{
 max-width: 100%;
 height: 300px;
+}
+.image-container {
+  position: relative;
+  overflow: hidden;
 }
 
 
@@ -32,6 +33,42 @@ height: 300px;
   margin-bottom: 0px;
   border-radius: 70px;
 }
+.card {
+  margin-top: 50px;
+}
+#createbutton {
+  margin-bottom: 20px;
+}
+
+
+.toggle-button {
+  background-color: white;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translate(0, -50%); /* Center vertically */
+}
+
+.arrow-icon {
+  font-size: 32px; /* Adjust the font size as needed */
+  display: inline-block;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+  color: black;
+  position: relative;
+  top: -17px; /* Adjust this value to move the arrow up */
+}
+
+.btn-danger {
+  float: right;
+}
+
 
 @media screen and (max-width: 1800px) { /*Making it responsive*/
   .col-md-4 {
@@ -39,31 +76,3 @@ height: 300px;
   }
 }
 
-.card{
-    margin-top: 50px;
-   
-}
-.toggle-button {
-  background-color: black; /* Set your desired background color */
-  color: #fff; /* Set your desired text color */
-  border: none;
-  border-radius: 20%; /* Make it circular */
-  padding: 6px;
-  padding-left: 10px;
-  cursor: pointer;
-  position: absolute;
-  top: 35%; /* Center vertically */
-  right: 0px; /* Adjust the position as needed */
-  transform: translateY(-50%); /* Center vertically */
-}
-
-.arrow-icon {
-  font-size: 32px; /* Set your desired font size */
-  display: inline-block;
-  transform: rotate(0deg); /* Initial rotation angle */
-  transition: transform 0.3s ease; /* Add a smooth transition effect */
-}
-
-.btn-danger{
-    float: right;
-}
