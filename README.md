@@ -4,11 +4,11 @@
 Hva må gjøres:
 - Arrow keys (SOBAN)
 - Design (Sander & Soban)
-- Side comments (Alle)
-- Unit testing (Tony)
+- Side comments (Alle (mest Soban))
+- Unit testing (Tony og Soban)
 - Proxy.conf, se modul (SOBAN)
 - Responsiv, Mindre skjermer (Soban)
-- Dokumentasjon (Pete )
+- Dokumentasjon (Pete og Soban )
 
-- Authentication logging (Må ikke)
+- Authentication logging (Soban)
 
