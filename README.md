@@ -1,8 +1,7 @@
 # FRIST 30.11.23 KL 12.00
 # LosCasaAngular 
 
-Hva må gjøres:
-- Arrow keys 
+- Arrow keys kan bli finere
 - Design (Mangler litt i listing)
 - Side comments (Trenger mer sidecomments i backend)
 - Unit testing (Tony)
