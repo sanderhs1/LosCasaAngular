@@ -2,13 +2,13 @@
 # LosCasaAngular 
 
 Hva må gjøres:
-- Arrow keys (SOBAN)
+- Arrow keys (Soban)
 - Design (Sander & Soban)
-- Side comments (Alle (mest Soban))
-- Unit testing (Tony og Soban)
-- Proxy.conf, se modul (SOBAN)
+- Side comments (Alle)
+- Unit testing (Tony)
+- Proxy.conf, se modul (Sander)
 - Responsiv, Mindre skjermer (Soban)
-- Dokumentasjon (Pete og Soban )
+- Dokumentasjon (Pete og Soban)
 
-- Authentication logging (Soban)
+- Authentication logging (Trenger ikke)
 
