@@ -15,7 +15,7 @@ code {
   border-color: #1861ac;
 }
 .hometitle { /* Background-image */
-  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url(https://wallpaperfx.com/view_image/mountain-luxury-villa-1920x1080-wallpaper-12800.jpg);
+  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url(https://amazingarchitecture.com/storage/3365/d_house_l2c_arquitetura_braga_portugal.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -57,12 +57,12 @@ code {
   margin-top: 20px;
 }
 
-  .introduction img {
+  .introduction img { /* Fixing img width in boxes */
     max-width: 100%;
     margin-bottom: 20px;
   }
 
-  .introduction a {
+  .introduction a { /* Fixing links stlying in grid */
     text-decoration: none;
     color: #313131;
   }
@@ -71,14 +71,13 @@ code {
       color: darkgray;
     }
 
-.home-text {
+.home-text { /* Designing the about us text */
   text-align: center;
   padding: 30px;
   margin: 30px;
   box-shadow: 10px 14px 8px 10px rgba(0, 0, 0, 0.2);
   background-color: #313131;
   color: white;
-
 }
 
 .home-text:hover{
@@ -86,6 +85,7 @@ code {
 
 
 @media (max-width: 1024px) {
+  /* Responsive with small screens */
   .introduction {
     grid-template-columns: 1fr; /* Grid styling that has one box in each row on small screen */
   }
@@ -101,14 +101,14 @@ code {
  
 }
 
-.listings{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 40px;
-    margin: 20px;
+.listings { /* Grid for the boxes */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 40px;
+  margin: 20px;
 }
 
-  .listings img {
+  .listings img { 
     width: 100%;
     max-width: 100%;
     height: auto;
@@ -116,7 +116,7 @@ code {
     border-radius: 10px 10px 0 0; /* Specific radius for top corners */
   }
 
-.listings-box {
+.listings-box { /* Adjusting the boxes for the clean look */
   background-color: #313131;
   border-radius: 10px; /* Specific radius for top corners */
   color: white;
@@ -125,19 +125,23 @@ code {
   margin: 20px;
 }
 .listings-box:hover{
-  transform: scale(1.03);
+  transform: scale(1.01);
+}
+
+.listings-box p{
+    padding: 10px;
 }
 
 .listings-box a{
     text-decoration: none;
-    color: white;
+    color: papayawhip;
 }
 
 .listings-box a:hover{
     color: gray;
 }
 
-.container-end li {
+.container-end li { /* Ending text bullet points */
   text-align: center;
   font-size: 16px;
   margin-bottom: 24px;
@@ -153,10 +157,10 @@ code {
   margin: 0 auto;
 }
 
-.container-end h1{
-  text-align: center;
-  font-style: italic;
-  border-bottom: 1px solid #313131;
-  padding-bottom: 30px;
-  margin-bottom: 40px;
-}
+    .container-end h1 { /* Ending text title */
+      text-align: center;
+      font-style: italic;
+      border-bottom: 1px solid #313131;
+      padding-bottom: 30px;
+      margin-bottom: 40px;
+    }
