@@ -6,7 +6,6 @@ Hva må gjøres:
 - Design (Sander & Soban)
 - Side comments (Alle)
 - Unit testing (Tony)
-- Proxy.conf, se modul (Sander og Soban)
 - Responsiv, Mindre skjermer (Soban)
 - Dokumentasjon (Pete og Soban)
 
