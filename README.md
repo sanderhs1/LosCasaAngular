@@ -2,12 +2,13 @@
 # LosCasaAngular 
 
 Hva må gjøres:
-- Arrow keys (Soban)
-- Design (Sander & Soban)
-- Side comments (Alle)
+- Arrow keys 
+- Design (Mangler litt i listing)
+- Side comments (Trenger mer sidecomments i backend)
 - Unit testing (Tony)
-- Responsiv, Mindre skjermer (Soban)
+- Responsiv, Mindre skjermer Listing vanlig trenger
 - Dokumentasjon (Pete og Soban)
+- Logging
 
-- Authentication logging (Trenger ikke)
+- Authentication  (Trenger ikke)
 
