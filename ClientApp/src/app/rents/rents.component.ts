@@ -29,7 +29,9 @@ export class RentsComponent implements OnInit {
   ) {
     this.rentForm = this.fb.group({
       startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
+      endDate: ['', [Validators.required]],
+    }, {
+      validators: this.dateRangeValidator.bind(this) // Add custom validator for date range
     });
   }
 
@@ -47,6 +49,21 @@ export class RentsComponent implements OnInit {
     this.listingService.getListingById(listingId).subscribe((listing: IListing) => {
       this.listingPrice = listing.Price;
     })
+  }
+  dateRangeValidator(formGroup: FormGroup): { [key: string]: boolean } | null {
+    const startDate = formGroup.get('startDate')?.value;
+    const endDate = formGroup.get('endDate')?.value;
+
+    if (startDate && endDate) {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+
+      if (start >= end) {
+        return { 'dateRangeError': true };
+      }
+    }
+
+    return null;
   }
 
 

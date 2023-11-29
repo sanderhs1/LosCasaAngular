@@ -19,15 +19,24 @@ thead {
   position: relative;
   overflow: hidden;
 }
-
-
+.listing-address {
+  color: grey;
+}
+.listing-rooms {
+    color: grey;
+}
+.card-price {
+    font-weight: bold;
+}
 .card-body {
   max-width: 100%;
   height: auto;
   padding: 30px;
+  padding-top: 20px !important;
   margin-top: 5px;
   margin-bottom: 0px;
   border-radius: 70px;
+  height: 60%;
 }
 .card {
   margin-top: 50px;
@@ -36,8 +45,13 @@ thead {
 #createbutton {
   margin-bottom: 20px;
 }
-
-
+.text p {
+  padding: 0 !important;
+  margin-bottom: 3px !important;
+}
+.btn {
+    margin-top: 12px;
+}
 .toggle-button {
   background-color: white;
   color: #fff;
@@ -64,6 +78,11 @@ thead {
 
 .btn-danger {
   float: right;
+}
+.card-img-top {
+  height: 350px; /* Set your desired fixed height */
+  object-fit: cover;
+  width: 100%; /* Ensure the image takes up 100% of the container width */
 }
 
 
